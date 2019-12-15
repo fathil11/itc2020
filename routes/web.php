@@ -33,7 +33,7 @@ Route::group(['prefix' => 'admin'], function(){
     // Question
     Route::group(['prefix' => 'question'], function(){
         // Table
-        Route::get('table', 'AdminController@showQuestions');
+        Route::get('table', 'AdminController@showQuestionsTable');
         
         // Add
         Route::get('add', 'AdminController@showAddQuestion');
@@ -67,7 +67,7 @@ Route::group(['prefix' => 'admin'], function(){
     // Competition
     Route::group(['prefix' => 'competition'], function(){
         // Statistic
-        Route::get('statistic', 'AdminController@showStatistic');
+        Route::get('statistic', 'AdminController@showStatisticTable');
         
         // Ban
         Route::get('ban/{id}', 'AdminController@showBan');
