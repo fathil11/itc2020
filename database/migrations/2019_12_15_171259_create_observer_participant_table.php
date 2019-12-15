@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateOberserverParticipantTable extends Migration
+class CreateObserverParticipantTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateOberserverParticipantTable extends Migration
      */
     public function up()
     {
-        Schema::create('oberserver_user', function (Blueprint $table) {
+        Schema::create('observer_participants', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('observer_id');
             $table->bigInteger('parcipant_id');
@@ -29,6 +29,6 @@ class CreateOberserverParticipantTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('oberserver_user');
+        Schema::dropIfExists('observer_participants');
     }
 }
