@@ -16,75 +16,74 @@ Route::group(['prefix' => 'admin'], function(){
     // Participant
     Route::group(['prefix' => 'participant'], function(){
         // Table
-        Route::get('table', '');
+        Route::get('table', 'AdminController@showParticipantsTable');
         
         // Add
-        Route::get('add', '');
-        Route::post('add', '');
+        Route::get('add', 'AdminController@showAddParticipant');
+        Route::post('add', 'AdminController@addparticipant');
         
         // Update
-        Route::get('update', '');
-        Route::post('update', '');
+        Route::get('update/{id}', 'AdminController@showUpdateParticipant');
+        Route::post('update/{id}', 'AdminController@showParticipantsTable');
         
         // Delete
-        Route::delete('delete', '');
+        Route::delete('delete/{id}', 'AdminController@deleteParticipant');
     });
     
     // Question
     Route::group(['prefix' => 'question'], function(){
         // Table
-        Route::get('table', '');
+        Route::get('table', 'AdminController@showQuestions');
         
         // Add
-        Route::get('add', '');
-        Route::post('add', '');
+        Route::get('add', 'AdminController@showAddQuestion');
+        Route::post('add', 'AdminController@addQuestion');
         
         // Update
-        Route::get('update', '');
-        Route::post('update', '');
+        Route::get('update{id}', 'AdminController@showUpdateQuestion');
+        Route::post('update{id}', 'AdminController@updateQuestion');
         
         // Delete
-        Route::delete('delete', '');
+        Route::delete('delete/{id}', 'AdminController@deleteQuestion');
     });
     
     // Observer
     Route::group(['prefix' => 'observer'], function(){
         // Table
-        Route::get('table', '');
+        Route::get('table', 'AdminController@showObserversTable');
         
         // Add
-        Route::get('add', '');
-        Route::post('add', '');
+        Route::get('add', 'AdminController@showAddObserver');
+        Route::post('add', 'AdminController@addObserver');
         
         // Update
-        Route::get('update', '');
-        Route::post('update', '');
+        Route::get('update/{id}', 'AdminController@showUpdateObserver');
+        Route::post('update/{id}', 'AdminController@updateObserver');
         
         // Delete
-        Route::delete('delete', '');
+        Route::delete('delete/{id}', 'AdminController@deleteObserver');
     });
 
     // Competition
     Route::group(['prefix' => 'competition'], function(){
         // Statistic
-        Route::get('statistic', '');
+        Route::get('statistic', 'AdminController@showStatistic');
         
         // Ban
-        Route::get('ban', '');
-        Route::post('ban', '');
+        Route::get('ban/{id}', 'AdminController@showBan');
+        Route::post('ban/{id}', 'AdminController@ban');
         
         // Session Panel
-        Route::get('session-panel', '');
+        Route::get('session-panel', 'AdminController@showSessionPanel');
             // Next Question
-            Route::get('next-question', '');
+            Route::get('next-question', 'AdminController@nextQuestion');
             // Previous Question
-            Route::get('previous-question', '');
+            Route::get('previous-question', 'AdminController@previousQuestion');
             // Next Session
-            Route::get('next-session', '');
+            Route::get('next-session', 'AdminController@nextSession');
             // Previous Session
-            Route::get('previous-session', '');
+            Route::get('previous-session', 'AdminController@previousSession');
     });
-    
 });
 
 
@@ -93,26 +92,27 @@ Route::group(['prefix' => 'observer'], function(){
     // Participant
     Route::group(['prefix' => 'participant'], function(){
         // Table
-        Route::get('table', '');
+        Route::get('table', 'ObserverController@showParticipantsTable');
         
         // Add
-        Route::get('add', '');
-        Route::post('add', '');
+        Route::get('add', 'ObserverController@showAddParticipant');
+        Route::post('add', 'ObserverController@addParticipant');
         
         // Delete
-        Route::delete('delete', '');
+        Route::delete('delete', 'ObserverController@deleteParticipant');
     });
     
     // Competition
     Route::group(['prefix' => 'competition'], function(){
         // Answer
-        Route::get('answer', '');
+        Route::get('answer', 'ObserverController@showAnswer');
+        Route::post('answer', 'ObserverController@answer');
     });
 });
 
 // Public Route
-Route::get('/soal', '');
-Route::get('/peserta', '');
+Route::get('/soal', 'PublicController@showSoal');
+Route::get('/peserta', 'ObserverController@showPeserta');
 
 
 Auth::routes();
