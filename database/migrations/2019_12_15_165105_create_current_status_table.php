@@ -15,6 +15,8 @@ class CreateCurrentStatusTable extends Migration
     {
         Schema::create('curent_status', function (Blueprint $table) {
             $table->increments('id');
+            $table->tinyInteger('session');
+            $table->integer('question');
             $table->timestamps();
         });
     }

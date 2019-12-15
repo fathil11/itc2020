@@ -67,11 +67,30 @@ Route::group(['prefix' => 'admin'], function(){
             // Previous Session
             Route::get('previous-session', '');
     });
+    
 });
+
 
 // Observer Route
 Route::group(['prefix' => 'observer'], function(){
-    Route::
+    // Participant
+    Route::group(['prefix' => 'participant'], function(){
+        // Table
+        Route::get('table', '');
+        
+        // Add
+        Route::get('add', '');
+        Route::post('add', '');
+        
+        // Delete
+        Route::delete('delete', '');
+    });
+    
+    // Competition
+    Route::group(['prefix' => 'competition'], function(){
+        // Answer
+        Route::get('answer', '');
+    });
 });
 
 
