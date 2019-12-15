@@ -11,87 +11,108 @@
 |
 */
 
-// // Admin Routes
-// Route::group(['prefix' => 'admin'], function(){
-//     // Participant
-//     Route::group(['prefix' => 'participant'], function(){
-//         // Table
-//         Route::get('table', '');
+// Admin Routes
+Route::group(['prefix' => 'admin'], function(){
+    // Participant
+    Route::group(['prefix' => 'participant'], function(){
+        // Table
+        Route::get('table', '');
         
-//         // Add
-//         Route::get('add', '');
-//         Route::post('add', '');
+        // Add
+        Route::get('add', '');
+        Route::post('add', '');
         
-//         // Update
-//         Route::get('update', '');
-//         Route::post('update', '');
+        // Update
+        Route::get('update', '');
+        Route::post('update', '');
         
-//         // Delete
-//         Route::delete('delete', '');
-//     });
+        // Delete
+        Route::delete('delete', '');
+    });
     
-//     // Question
-//     Route::group(['prefix' => 'question'], function(){
-//         // Table
-//         Route::get('table', '');
+    // Question
+    Route::group(['prefix' => 'question'], function(){
+        // Table
+        Route::get('table', '');
         
-//         // Add
-//         Route::get('add', '');
-//         Route::post('add', '');
+        // Add
+        Route::get('add', '');
+        Route::post('add', '');
         
-//         // Update
-//         Route::get('update', '');
-//         Route::post('update', '');
+        // Update
+        Route::get('update', '');
+        Route::post('update', '');
         
-//         // Delete
-//         Route::delete('delete', '');
-//     });
-
-//     // Competition
-//     Route::group(['prefix' => 'competition'], function(){
-//         // Statistic
-//         Route::get('statistic', '');
-        
-//         // Ban
-//         Route::get('ban', '');
-//         Route::post('ban', '');
-        
-//         // Session Panel
-//         Route::get('session-panel', '');
-//             // Next Question
-//             Route::get('next-question', '');
-//             // Previous Question
-//             Route::get('previous-question', '');
-//             // Next Session
-//             Route::get('next-session', '');
-//             // Previous Session
-//             Route::get('previous-session', '');
-//     });
+        // Delete
+        Route::delete('delete', '');
+    });
     
-// });
-
-
-// // Observer Route
-// Route::group(['prefix' => 'observer'], function(){
-//     // Participant
-//     Route::group(['prefix' => 'participant'], function(){
-//         // Table
-//         Route::get('table', '');
+    // Observer
+    Route::group(['prefix' => 'observer'], function(){
+        // Table
+        Route::get('table', '');
         
-//         // Add
-//         Route::get('add', '');
-//         Route::post('add', '');
+        // Add
+        Route::get('add', '');
+        Route::post('add', '');
         
-//         // Delete
-//         Route::delete('delete', '');
-//     });
+        // Update
+        Route::get('update', '');
+        Route::post('update', '');
+        
+        // Delete
+        Route::delete('delete', '');
+    });
+
+    // Competition
+    Route::group(['prefix' => 'competition'], function(){
+        // Statistic
+        Route::get('statistic', '');
+        
+        // Ban
+        Route::get('ban', '');
+        Route::post('ban', '');
+        
+        // Session Panel
+        Route::get('session-panel', '');
+            // Next Question
+            Route::get('next-question', '');
+            // Previous Question
+            Route::get('previous-question', '');
+            // Next Session
+            Route::get('next-session', '');
+            // Previous Session
+            Route::get('previous-session', '');
+    });
     
-//     // Competition
-//     Route::group(['prefix' => 'competition'], function(){
-//         // Answer
-//         Route::get('answer', '');
-//     });
-// });
+});
+
+
+// Observer Route
+Route::group(['prefix' => 'observer'], function(){
+    // Participant
+    Route::group(['prefix' => 'participant'], function(){
+        // Table
+        Route::get('table', '');
+        
+        // Add
+        Route::get('add', '');
+        Route::post('add', '');
+        
+        // Delete
+        Route::delete('delete', '');
+    });
+    
+    // Competition
+    Route::group(['prefix' => 'competition'], function(){
+        // Answer
+        Route::get('answer', '');
+    });
+});
+
+// Public Route
+Route::get('/soal', '');
+Route::get('/peserta', '');
 
 
 Auth::routes();
