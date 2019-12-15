@@ -17,11 +17,13 @@ class CreateParticipantsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name',50);
             $table->string('school',50);
-            $table->timestamp('absent',0);
+            $table->date('absent');
             $table->integer('point_1');
             $table->integer('point_2');
             $table->integer('point_3');
             $table->integer('point_4');
+            $table->tinyInteger('status');
+            $table->timestamps();
         });
     }
 
