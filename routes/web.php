@@ -34,17 +34,18 @@ Route::group(['prefix' => 'admin'], function(){
     Route::group(['prefix' => 'question'], function(){
         // Table
         Route::get('table', 'AdminQuestionController@showQuestionsTable');
+        Route::get('table/{question}', 'AdminQuestionController@showQuestion');
         
         // Add
         Route::get('add', 'AdminQuestionController@showAddQuestion');
-        Route::post('add', 'AdminQuestionController@addQuestion');
+        Route::post('table', 'AdminQuestionController@addQuestion');
         
         // Update
-        Route::get('update{id}', 'AdminQuestionController@showUpdateQuestion');
-        Route::post('update{id}', 'AdminQuestionController@updateQuestion');
+        Route::post('{question}/edit', 'AdminQuestionController@showUpdateQuestion');
+        Route::patch('table/{question}', 'AdminQuestionController@updateQuestion');
         
         // Delete
-        Route::delete('delete/{id}', 'AdminQuestionController@deleteQuestion');
+        Route::delete('table/{question}', 'AdminQuestionController@deleteQuestion');
     });
     
     // Observer
@@ -118,3 +119,10 @@ Route::get('/peserta', 'PublicController@showPeserta');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', function(){
+    return view('welcome');
+});
+
+Route::get('/admin/question', function () {
+    return view('admin.question.index');
+});
