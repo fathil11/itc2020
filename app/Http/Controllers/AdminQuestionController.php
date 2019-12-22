@@ -34,6 +34,7 @@ class AdminQuestionController extends Controller
         return redirect ('/admin/question/table')->with('status', 'Data Berhasil Ditambahkan');
     }
 
+    //show
     public function showQuestion(Question $question){
         return view('/admin/question/show', ['question' => $question]);
     }

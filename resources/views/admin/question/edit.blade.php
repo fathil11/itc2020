@@ -15,7 +15,7 @@
         <h3>Form Ubah Data Soal</h3>
         <div class="row">
             <div class="col-8">
-                <form method="post" action="{{ url('/admin/question/table/'.$question->id) }}" class="my-5">
+                <form method="post" action="{{ url('admin/question/table/'.$question->id) }}" class="my-5">
                     @method('patch')
                     @csrf
                     <div class="form-group">
