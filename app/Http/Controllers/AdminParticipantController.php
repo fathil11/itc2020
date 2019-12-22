@@ -52,16 +52,10 @@ class AdminParticipantController extends Controller
             'school' => 'required'
         ]);
 
-        Question::where('id', $question->id)
+        Question::where('id', $participant->id)
                 ->update([
                     'name' => $request->name, 
-                    'school' => $request->school,
-                    'absent' => now(),
-                    'point_1' => 0,
-                    'point_2' => 'point_1',
-                    'point_3' => 20,
-                    'point_4' => 0,
-                    'status' => 0
+                    'school' => $request->school
                 ]);
         return redirect ('/admin/participant/table')->with('status', 'Data Berhasil Diubah');
     }
