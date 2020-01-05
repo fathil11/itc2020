@@ -13,8 +13,17 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    You are logged in!
+                    <div class="row">
+                        <div class="col mx-auto">
+                            <a href="{{ url('/admin/question/table') }}" class="btn btn-primary" style="width: 200px;">Soal</a>
+                        </div>
+                        <div class="col mx-auto">
+                            <a href="{{ url('/admin/participant/table') }}" class="btn btn-success" style="width: 200px;">Peserta</a>
+                        </div>
+                        <div class="col mx-auto">
+                            <a href="{{ url('/admin/observer') }}" class="btn btn-danger" style="width: 200px;">Pengawas</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
