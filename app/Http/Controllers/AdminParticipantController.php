@@ -26,12 +26,12 @@ class AdminParticipantController extends Controller
             'school' => 'required'
         ]);
 
-        Question::create([
+        Participant::create([
             'name' => $request->name, 
             'school' => $request->school,
             'absent' => now(),
             'point_1' => 0,
-            'point_2' => 'point_1',
+            'point_2' => 0,
             'point_3' => 20,
             'point_4' => 0,
             'status' => 0
@@ -52,9 +52,9 @@ class AdminParticipantController extends Controller
             'school' => 'required'
         ]);
 
-        Question::where('id', $participant->id)
+        Participant::where('id', $participant->id)
                 ->update([
-                    'name' => $request->name, 
+                    'name' => $request->name,
                     'school' => $request->school
                 ]);
         return redirect ('/admin/participant/table')->with('status', 'Data Berhasil Diubah');
@@ -62,7 +62,7 @@ class AdminParticipantController extends Controller
 
     //destroy
     function deleteParticipant(Participant $participant){
-        Question::destroy($participant->id);
+        Participant::destroy($participant->id);
         return redirect ('/admin/participant/table')->with('status', 'Data Berhasil Dihapus');
     }
 }

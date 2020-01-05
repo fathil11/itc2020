@@ -20,14 +20,14 @@ Route::group(['prefix' => 'admin'], function(){
         
         // Add
         Route::get('add', 'AdminParticipantController@showAddParticipant');
-        Route::post('add', 'AdminParticipantController@addparticipant');
+        Route::post('table', 'AdminParticipantController@addParticipant');
         
         // Update
-        Route::get('update/{id}', 'AdminParticipantController@showUpdateParticipant');
-        Route::post('update/{id}', 'AdminParticipantController@showParticipantsTable');
+        Route::post('{participant}/edit', 'AdminParticipantController@showUpdateParticipant');
+        Route::patch('table/{participant}', 'AdminParticipantController@updateParticipant');
         
         // Delete
-        Route::delete('delete/{id}', 'AdminParticipantController@deleteParticipant');
+        Route::delete('table/{participant}', 'AdminParticipantController@deleteParticipant');
     });
     
     // Question

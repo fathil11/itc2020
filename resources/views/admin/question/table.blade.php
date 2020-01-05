@@ -8,7 +8,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <title>Hello, world!</title>
+    <title>Question List</title>
   </head>
   <body>
         <div class="container my-5">
@@ -41,15 +41,16 @@
                                 <td scope="row">{{ $question->option_c }}</td>
                                 <td scope="row">{{ $question->option_d }}</td>
                                 <td>
-                                    <form action="{{ url('admin/question/'.$question->id) }}/edit" method="post" class="d-inline">
+                                    <form action="{{ url('admin/question/'.$question->id.'/edit') }}" method="post" class="d-inline">
                                         @csrf
                                         <button type="submit" class="badge badge-success">Edit</button>
                                     </form>
-                                    <form action="{{ url ('admin/question/table/') }}" method="post" class="d-inline">
+                                    {{-- url('admin/question/table', ['id' => $question->id]) --}}
+                                    <form action="{{ url ('admin/question/table/'.$question->id) }}" method="post" class="d-inline">
                                         @csrf
                                         @method('delete')
                                         <button type="submit" class="badge badge-danger">Delete</button>
-                                      </form>
+                                    </form>
                                 </td>
                                 <td><a href="{{ url ('admin/question/table/'.$question->id) }}" class="badge badge-primary">Show</a></td>
                             </tr>
