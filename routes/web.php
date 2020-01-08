@@ -58,11 +58,11 @@ Route::group(['middleware' => ['admin','auth'], 'prefix' => 'admin'], function()
         Route::post('add', 'AdminObserverController@addObserver');
         
         // Update
-        Route::get('update/{id}', 'AdminObserverController@showUpdateObserver');
-        Route::post('update/{id}', 'AdminObserverController@updateObserver');
+        Route::get('update/{user}', 'AdminObserverController@showUpdateObserver');
+        Route::post('update/{user}', 'AdminObserverController@updateObserver');
         
         // Delete
-        Route::delete('delete/{id}', 'AdminObserverController@deleteObserver');
+        Route::delete('table/{user}', 'AdminObserverController@deleteObserver');
     });
 
     // Competition

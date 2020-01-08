@@ -22,5 +22,9 @@ class AdminObserverController extends Controller
 
     function updateObserver($id){}
 
-    function deleteObserver($id){}
+    //destroy
+    function deleteObserver(User $user){
+        User::destroy($user->id);
+        return redirect('/admin/observer/table')->with('status', 'Data Berhasil Dihapus');
+    }
 }

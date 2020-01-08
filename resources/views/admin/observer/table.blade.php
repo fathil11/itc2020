@@ -35,7 +35,7 @@
                       <td scope="row">{{ $observer->role }}</td>
                       <td scope="row">{{ $observer->remember_token }}</td>
                       <td>
-                        <form action="{{ url ('admin/participant/table/'.$observer->id) }}" method="post" class="d-inline">
+                        <form action="{{ url ('admin/observer/table/'.$observer->id) }}" method="post" class="d-inline">
                           @csrf
                           @method('delete')
                           <button type="submit" class="badge badge-danger">Delete</button>
