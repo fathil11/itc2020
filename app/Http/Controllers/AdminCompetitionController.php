@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Question;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AdminCompetitionController extends Controller
 {
@@ -14,11 +16,18 @@ class AdminCompetitionController extends Controller
 
     function showSessionPanel(){}
 
-    function nextQuestion(){}
+    // function nextQuestion(){}
+    // function previousQuestion(){}
+    function showQuestion($id){
+        $question = Question::where('id', $id)->firstOrFail();
 
-    function previousQuestion(){}
+        $previous = Question::where('id', '<', $question->id)->orderBy('id','desc')->first();
 
-    function nextSession(){}
+        $next = Question::where('id', '>', $question->id)->orderBy('id')->first();
 
-    function previousSession(){}
+        return view('/admin/competition/question')->with(compact('question','previous','next'));
+    }
+
+    // function nextSession(){}
+    // function previousSession(){}
 }

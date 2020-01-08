@@ -15,13 +15,16 @@
                     @endif
                     <div class="row">
                         <div class="col mx-auto">
-                            <a href="{{ url('/admin/question/table') }}" class="btn btn-primary" style="width: 200px;">Soal</a>
+                            <a href="{{ url('/admin/question/table') }}" class="btn btn-primary" style="width: 100px;">Soal</a>
                         </div>
                         <div class="col mx-auto">
-                            <a href="{{ url('/admin/participant/table') }}" class="btn btn-success" style="width: 200px;">Peserta</a>
+                            <a href="{{ url('/admin/participant/table') }}" class="btn btn-success" style="width: 100px;">Peserta</a>
                         </div>
                         <div class="col mx-auto">
-                            <a href="{{ url('/admin/observer/table') }}" class="btn btn-danger" style="width: 200px;">Pengawas</a>
+                            <a href="{{ url('/admin/observer/table') }}" class="btn btn-danger" style="width: 100px;">Pengawas</a>
+                        </div>
+                        <div class="col mx-auto">
+                            <a href="{{ url('/admin/competition/question/') }}" class="btn btn-warning" style="width: 100px;">Jalan Lomba</a>
                         </div>
                     </div>
                 </div>

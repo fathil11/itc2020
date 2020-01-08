@@ -76,14 +76,12 @@ Route::group(['middleware' => ['admin','auth'], 'prefix' => 'admin'], function()
         
         // Session Panel
         Route::get('session-panel', 'AdminCompetitionController@showSessionPanel');
-            // Next Question
-            Route::get('next-question', 'AdminCompetitionController@nextQuestion');
-            // Previous Question
-            Route::get('previous-question', 'AdminCompetitionController@previousQuestion');
-            // Next Session
-            Route::get('next-session', 'AdminCompetitionController@nextSession');
-            // Previous Session
-            Route::get('previous-session', 'AdminCompetitionController@previousSession');
+        // Question
+        Route::get('question/{id}', 'AdminCompetitionController@showQuestion');
+        // Next Session
+        Route::get('next-session', 'AdminCompetitionController@nextSession');
+        // Previous Session
+        Route::get('previous-session', 'AdminCompetitionController@previousSession');
     });
 });
 
