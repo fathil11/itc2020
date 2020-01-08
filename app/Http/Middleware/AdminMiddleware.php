@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Auth;
 
 class AdminMiddleware
 {
@@ -15,17 +16,20 @@ class AdminMiddleware
      */
     public function handle($request, Closure $next)
     {
-        $user = $request->user();
+        // $user = $request->user();
 
-        if ($user) {
-            if ($user->id == 1) {
-                return $next($request);
-            } else {
-                return redirect(url('/'));
-            }
-        }else{
-            return redirect(url('/'));
+        // if ($user) {
+        //     if ($user->id == 1) {
+        //         return $next($request);
+        //     } else {
+        //         return redirect(url('/'));
+        //     }
+        // }else{
+        //     return redirect(url('/'));
+        // }
+        if (Auth::user()->role == 'admin'){
+            return $next($request);
         }
-
+        return redirect(url('/home'));
     }
 }

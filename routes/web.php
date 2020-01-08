@@ -12,7 +12,7 @@
 */
 
 // Admin Routes
-Route::group(['prefix' => 'admin'], function(){
+Route::group(['middleware' => ['admin','auth'], 'prefix' => 'admin'], function(){
     // Participant
     Route::group(['prefix' => 'participant'], function(){
         // Table
@@ -123,6 +123,6 @@ Route::get('/', function(){
     return view('welcome');
 });
 
-Route::get('/admin/question', function () {
-    return view('admin.question.index');
-});
+Route::get('/admin', function () {
+    return view('admin.index');
+})->middleware(['admin','auth']);

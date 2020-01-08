@@ -2,11 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AdminObserverController extends Controller
 {
-    function showObserversTable(){}
+    ///index
+    function showObserversTable(){
+        $observers = User::all();
+        return view('/admin/observer/table',['observers' => $observers]);
+    }
 
     function showAddObserver(){}
 
