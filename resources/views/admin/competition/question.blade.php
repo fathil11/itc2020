@@ -7,13 +7,14 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
     <title>Question Detail</title>
   </head>
   <body>
     <div class="container my-5">
-        <div class="row mx-auto min-vh-100">
-            <div class="col-md-8">
+        <div class="row mx-auto min-vh-80">
+            <div class="col-md-12 mx-auto">
                 @if ($question->session == 1)
                     <h5>Soal Sesi Penyisihan 1</h5>
                 @elseif ($question->session == 2)
@@ -42,24 +43,26 @@
                 @else    
                 @endif
             </div>
-            <div class="col-md-6">
+        </div>
+        <div class="row">
+            <div class="col d-flex justify-content-start">
                 @if (isset($previous))
-                    <a href="{{ url('/admin/competition/question/'.$previous->id) }}">
-                        <div class="col mx-auto">
-                            <div class="btn btn-primary"><i class="fa fa-arrow-left"></i> Previous Post</div>
-                        </div>
-                    </a>
-                @endif
+                <a href="{{ url('/admin/competition/question/'.$previous->id) }}">
+                    <div class="col mx-auto">
+                        <div class="btn btn-primary"><i class="fa fa-arrow-left"></i>Previous Question</div>
+                    </div>
+                </a>
+            @endif
             </div>
-            <div class="col-md-6">
+           <div class="col d-flex justify-content-end">
                 @if (isset($next))
                 <a href="{{ url('/admin/competition/question/'.$next->id) }}">
                     <div class="col mx-auto">
-                        <div class="btn btn-primary">Next Post <i class="fa fa-arrow-right"></i></div>
+                        <div class="btn btn-primary">Next Question<i class="fa fa-arrow-right"></i></div>
                     </div>
                 </a>
                 @endif
-            </div>
+           </div>
         </div>
     </div>
         
