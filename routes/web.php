@@ -71,17 +71,17 @@ Route::group(['middleware' => ['admin','auth'], 'prefix' => 'admin'], function()
         Route::get('statistic', 'AdminCompetitionController@showStatisticTable');
         
         // Ban
-        Route::get('ban/{id}', 'AdminCompetitionController@showBan');
-        Route::post('ban/{id}', 'AdminCompetitionController@ban');
+        // Route::get('ban/{id}', 'AdminCompetitionController@showBan');
+        // Route::post('ban/{id}', 'AdminCompetitionController@ban');
         
         // Session Panel
-        Route::get('session-panel', 'AdminCompetitionController@showSessionPanel');
+        // Route::get('session-panel', 'AdminCompetitionController@showSessionPanel');
         // Question
         Route::get('question/{id}', 'AdminCompetitionController@showQuestion');
         // Next Session
-        Route::get('next-session', 'AdminCompetitionController@nextSession');
+        // Route::get('next-session', 'AdminCompetitionController@nextSession');
         // Previous Session
-        Route::get('previous-session', 'AdminCompetitionController@previousSession');
+        // Route::get('previous-session', 'AdminCompetitionController@previousSession');
     });
 });
 
