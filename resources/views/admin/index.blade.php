@@ -24,7 +24,7 @@
                             <a href="{{ url('/admin/observer/table') }}" class="btn btn-danger" style="width: 100px;">Pengawas</a>
                         </div>
                         <div class="col mx-auto">
-                            <a href="{{ url('/admin/competition/question/') }}" class="btn btn-warning" style="width: 100px;">Jalan Lomba</a>
+                            <a href="{{ url('/admin/competition/question/2') }}" class="btn btn-warning" style="width: 100px;">Jalan Lomba</a>
                         </div>
                     </div>
                 </div>
