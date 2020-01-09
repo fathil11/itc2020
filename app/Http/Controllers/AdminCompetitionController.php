@@ -3,12 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Question;
+use App\Participant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class AdminCompetitionController extends Controller
 {
-    function showStatisticTable(){}
+    function showStatisticTable(){
+        $statistics =Participant::sortable()->paginate(10);
+        return view('/admin/competition/statistic')->with(compact('statistics'));
+    }
 
     function showBan($id){}
 
