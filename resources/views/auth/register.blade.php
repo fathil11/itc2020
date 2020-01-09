@@ -65,7 +65,7 @@
                             <label for="key-access" class="col-md-4 col-form-label text-md-right">Key Access</label>
 
                             <div class="col-md-6">
-                                <input id="key-access" type="text" class="form-control" name="key-access" required>
+                                <input id="key-access" type="password" class="form-control" name="key-access" required>
                             </div>
                         </div>
 
