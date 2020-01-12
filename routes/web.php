@@ -87,20 +87,21 @@ Route::group(['middleware' => ['admin','auth'], 'prefix' => 'admin'], function()
 
 
 // Observer Route
-Route::group(['prefix' => 'observer'], function(){
+Route::group(['middleware' => ['auth'], 'prefix' => 'observer'], function(){
     // Participant
-    Route::group(['prefix' => 'participant'], function(){
-        // Table
-        Route::get('table', 'ObserverParticipantController@showParticipantsTable');
+    // Route::group(['prefix' => 'participant'], function(){
+    //     // Table
+    //     Route::get('table', 'ObserverParticipantController@showParticipantsTable');
         
-        // Add
-        Route::get('add', 'ObserverParticipantController@showAddParticipant');
-        Route::post('add', 'ObserverParticipantController@addParticipant');
+    //     // Add
+    //     Route::get('add', 'ObserverParticipantController@showAddParticipant');
+    //     Route::post('add', 'ObserverParticipantController@addParticipant');
         
-        // Delete
-        Route::delete('delete', 'ObserverParticipantController@deleteParticipant');
-    });
-    
+    Route::get('/', 'ObserverParticipantController@showParticipantsTable')->middleware(['auth']);
+    //     // Delete
+    //     Route::delete('delete', 'ObserverParticipantController@deleteParticipant');
+    // });
+    // Route::get('/', 'ObserverParticipantController@showParticipantsTable');
     // Competition
     Route::group(['prefix' => 'competition'], function(){
         // Answer
@@ -121,6 +122,10 @@ Route::get('/', function(){
     return view('welcome');
 });
 
+use App\Question;
+use App\User;
+
 Route::get('/admin', function () {
-    return view('admin.index');
+    $question = Question::first();
+    return view('admin.index')->with(compact('question'));
 })->middleware(['admin','auth']);

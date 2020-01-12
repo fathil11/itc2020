@@ -36,4 +36,15 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Method One To Many Participants
+     * 
+     * @return void
+     */
+
+     public function participants()
+     {
+         return $this->hasMany(Participant::class);
+     }
 }

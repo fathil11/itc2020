@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 class AdminObserverController extends Controller
 {
     ///index
-    function showObserversTable(){
+    function showObserversTable(User $user){
         $observers = User::all();
         return view('/admin/observer/table',['observers' => $observers]);
     }
