@@ -52,7 +52,7 @@
                         <div class="btn btn-primary"><i class="fa fa-arrow-left"></i>Previous Question</div>
                     </div>
                 </a>
-            @endif
+                @endif
             </div>
            <div class="col d-flex justify-content-end">
                 @if (isset($next))

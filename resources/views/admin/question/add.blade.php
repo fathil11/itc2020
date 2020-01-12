@@ -22,8 +22,8 @@
                           <label class="input-group-text" for="session">Sesi</label>
                         </div>
                         <select class="custom-select" id="session" name="session">
-                          <option selected>Choose...</option>
-                          <option value="1">Penyisihan 1</option>
+                          <option disabled>Choose...</option>
+                            <option value="1">Penyisihan 1</option>
                           <option value="2">Penyisihan 2</option>
                           <option value="3">Final 1</option>
                           <option value="4">Final 2</option>

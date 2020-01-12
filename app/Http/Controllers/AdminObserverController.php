@@ -14,13 +14,13 @@ class AdminObserverController extends Controller
         return view('/admin/observer/table',['observers' => $observers]);
     }
 
-    function showAddObserver(){}
+    // function showAddObserver(){}
 
-    function addObserver(){}
+    // function addObserver(){}
 
-    function showUpdateObserver($id){}
+    // function showUpdateObserver($id){}
 
-    function updateObserver($id){}
+    // function updateObserver($id){}
 
     //destroy
     function deleteObserver(User $user){

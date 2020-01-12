@@ -53,13 +53,13 @@ Route::group(['middleware' => ['admin','auth'], 'prefix' => 'admin'], function()
         // Table
         Route::get('table', 'AdminObserverController@showObserversTable');
         
-        // Add
-        Route::get('add', 'AdminObserverController@showAddObserver');
-        Route::post('add', 'AdminObserverController@addObserver');
+        // // Add
+        // Route::get('add', 'AdminObserverController@showAddObserver');
+        // Route::post('add', 'AdminObserverController@addObserver');
         
-        // Update
-        Route::get('update/{user}', 'AdminObserverController@showUpdateObserver');
-        Route::post('update/{user}', 'AdminObserverController@updateObserver');
+        // // Update
+        // Route::get('update/{user}', 'AdminObserverController@showUpdateObserver');
+        // Route::post('update/{user}', 'AdminObserverController@updateObserver');
         
         // Delete
         Route::delete('table/{user}', 'AdminObserverController@deleteObserver');
@@ -105,8 +105,8 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'observer'], function(){
     // Competition
     Route::group(['prefix' => 'competition'], function(){
         // Answer
-        Route::get('answer', 'ObserverCompetitionController@showAnswer');
-        Route::post('answer', 'ObserverCompetitionController@answer');
+        Route::get('answer/{question}', 'ObserverCompetitionController@showAnswer');
+        Route::patch('answer/{question}', 'ObserverCompetitionController@answer');
     });
 });
 
