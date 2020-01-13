@@ -6,10 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
+    
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
+    <style>
+      a{
+        color: white;
+        text-decoration: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;  
+      }
+      a:hover {
+        color: white;
+        text-decoration: none;
+      }
+      .badge-success {
+        background-color: forestgreen;
+      }
+      .badge-danger {
+        background-color: brown;
+      }
+    </style>
+    
     <title>Participant List</title>
   </head>
   <body>
@@ -29,6 +51,7 @@
                     <th scope="col">@sortablelink('point_3')</th>
                     <th scope="col">@sortablelink('point_4')</th>
                     <th scope="col">@sortablelink('status')</th>
+                    <th scope="col" class="a" colspan="2">Update Status</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -44,6 +67,18 @@
                             <td scope="row">{{ $statistic->point_3 }}</td>
                             <td scope="row">{{ $statistic->point_4 }}</td>
                             <td scope="row">{{ $statistic->status }}</td>
+                            <td>
+                              <form action="{{ url('admin/competition/statistic/'.$statistic->id) }}" method="post" class="d-inline">
+                                @csrf
+                                @method('put')
+                                <button type="submit" class="badge badge-success">+</button>
+                              </form>
+                              <form action="{{ url('admin/competition/statistic/'.$statistic->id) }}" method="post" class="d-inline">
+                                @csrf
+                                @method('patch')
+                                <button type="submit" class="badge badge-danger">-</button>
+                              </form>
+                            </td>
                           </tr>
                         @endforeach
                     @endif

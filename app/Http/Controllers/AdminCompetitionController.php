@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 class AdminCompetitionController extends Controller
 {
     function showStatisticTable(){
-        $statistics =Participant::sortable()->paginate(10);
+        $statistics = Participant::sortable()->paginate(10);
         return view('/admin/competition/statistic')->with(compact('statistics'));
     }
 
@@ -30,6 +30,24 @@ class AdminCompetitionController extends Controller
         $next = Question::where('id', '>', $question->id)->orderBy('id')->first();
 
         return view('/admin/competition/question')->with(compact('question','previous','next'));
+    }
+
+    function updateStatusInc($id, Participant $participant){
+        $user = Participant::where('id', $id)->first();
+        Participant::where('id', $id)
+                ->update([
+                    'status' => $user->status+1
+                ]);
+            return back();
+    }
+
+    function updateStatusDec($id, Participant $participant){
+        $user = Participant::where('id', $id)->first();
+        Participant::where('id', $id)
+        ->update([
+            'status' => $user->status-1
+        ]);
+        return back();
     }
 
     // function nextSession(){}

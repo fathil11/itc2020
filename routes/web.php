@@ -69,6 +69,8 @@ Route::group(['middleware' => ['admin','auth'], 'prefix' => 'admin'], function()
     Route::group(['prefix' => 'competition'], function(){
         // Statistic
         Route::get('statistic', 'AdminCompetitionController@showStatisticTable');
+        Route::put('statistic/{id}', 'AdminCompetitionController@updateStatusInc');
+        Route::patch('statistic/{id}', 'AdminCompetitionController@updateStatusDec');
         
         // Ban
         // Route::get('ban/{id}', 'AdminCompetitionController@showBan');
