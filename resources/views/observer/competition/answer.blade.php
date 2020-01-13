@@ -30,59 +30,64 @@
                 @else    
                 @endif
             @foreach ($participants as $participant)
-                <h3>{{ $participant->name }}</h3>
-                @if ($question->session == 1)
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                        <label class="input-group-text" for="answer">Jawaban</label>
-                        </div>
-                    <select class="custom-select" id="answer" name="answer[{{ $participant->id }}]">
-                        <option disabled>Choose...</option>
-                        <option value="A">A</option>
-                        <option value="B">B</option>
-                    </select>
+            @if ($participant->status == $question->session)
+            <h3>{{ $participant->name }}</h3>
+            @if ($question->session == 1)
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                    <label class="input-group-text" for="answer">Jawaban</label>
                     </div>
-                @elseif ($question->session == 2)
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                        <label class="input-group-text" for="answer">Jawaban</label>
-                        </div>
-                    <select class="custom-select" id="answer" name="answer[{{ $participant->id }}]">
-                        <option disabled>Choose...</option>
-                        <option value="A">A</option>
-                        <option value="B">B</option>
-                        <option value="C">C</option>
-                        <option value="D">D</option>
-                    </select>
+                <select class="custom-select" id="answer" name="answer[{{ $participant->id }}]">
+                    <option disabled>Choose...</option>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="Z">Tidak Menjawab</option>
+                </select>
+                </div>
+            @elseif ($question->session == 2)
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                    <label class="input-group-text" for="answer">Jawaban</label>
                     </div>
-                @elseif ($question->session == 3)
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                        <label class="input-group-text" for="answer">Jawaban</label>
-                        </div>
-                    <select class="custom-select" id="answer" name="answer[{{ $participant->id }}]">
-                        <option disabled>Choose...</option>
-                        <option value="A">A</option>
-                        <option value="B">B</option>
-                        <option value="C">C</option>
-                    </select>
+                <select class="custom-select" id="answer" name="answer[{{ $participant->id }}]">
+                    <option disabled>Choose...</option>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                    <option value="Z">Tidak Menjawab</option>
+                </select>
+                </div>
+            {{-- @elseif ($question->session == 3)
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                    <label class="input-group-text" for="answer">Jawaban</label>
                     </div>
-                @elseif ($question->session == 4)
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                        <label class="input-group-text" for="answer">Jawaban</label>
-                        </div>
-                    <select class="custom-select" id="answer" name="answer[{{ $participant->id }}]">
-                        <option disabled>Choose...</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                    </select>
+                <select class="custom-select" id="answer" name="answer[{{ $participant->id }}]">
+                    <option disabled>Choose...</option>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                </select>
+                </div>
+            @elseif ($question->session == 4)
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                    <label class="input-group-text" for="answer">Jawaban</label>
                     </div>
-                @else    
-                @endif
+                <select class="custom-select" id="answer" name="answer[{{ $participant->id }}]">
+                    <option disabled>Choose...</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                </div> --}}
+            @else    
+            @endif
+            @else
+            @endif
             @endforeach
             <button type="submit" class="btn btn-primary">Submit</button>
             </form>

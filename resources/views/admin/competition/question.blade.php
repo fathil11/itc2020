@@ -16,13 +16,17 @@
         <div class="row mx-auto min-vh-80">
             <div class="col-md-12 mx-auto">
                 @if ($question->session == 1)
-                    <h5>Soal Sesi Penyisihan 1</h5>
+                    <h4>Sesi Penyisihan 1</h4>
+                    <h5>Soal {{ $question->id }}</h5>
                 @elseif ($question->session == 2)
-                    <h5>Soal Sesi Penyisihan 2</h5>
+                    <h4>Sesi Penyisihan 2</h4>
+                    <h5>Soal {{ $question->id-30 }}</h5>
                 @elseif ($question->session == 3)
-                    <h5>Soal Sesi Final 1</h5>
+                    <h4>Sesi Final 1</h4>
+                    <h5>Soal {{ $question->id-50 }}</h5>
                 @elseif ($question->session == 4)
-                    <h5>Soal Sesi Final 2</h5>
+                    <h4>Sesi Final 2</h4>
+                    <h5>Soal {{ $question->id-60 }}</h5>
                 @else    
                 @endif
                 <h1>{{ $question->question }}</h1>

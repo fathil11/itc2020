@@ -34,7 +34,7 @@ class AdminParticipantController extends Controller
             'point_2' => 0,
             'point_3' => 20,
             'point_4' => 0,
-            'status' => 0
+            'status' => 1
         ]);
 
         return redirect ('/admin/participant/table')->with('status', 'Data Berhasil Ditambahkan');

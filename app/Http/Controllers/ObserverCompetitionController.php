@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use Auth;
 use App\User;
-use App\Question;
 use App\Participant;
+use App\Question;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -24,10 +24,59 @@ class ObserverCompetitionController extends Controller
         $participants = $user->participants()->get();
         foreach ($participants as $participant) {
             # code...
-            dump($request->answer[$participant->id]);
+            if ($question->session == 1 && $participant->status == 1)
+            {
+                if($request->answer[$participant->id] == $question->answer_key)
+                {
+                    Participant::where('id', $participant->id)
+                    ->update([
+                        'point_1' => $participant->point_1+3
+                    ]);
+                }
+                elseif ($request->answer[$participant->id] == 'Z')
+                {
+                    Participant::where('id', $participant->id)
+                    ->update([
+                        'point_1' => $participant->point_1+0
+                    ]);
+                }
+                else
+                {
+                    Participant::where('id', $participant->id)
+                    ->update([
+                        'point_1' => $participant->point_1+0
+                    ]);
+                }
+            }
+            elseif ($question->session == 2 && $participant->status == 2)
+            {
+                if($request->answer[$participant->id] == $question->answer_key)
+                {
+                    Participant::where('id', $participant->id)
+                    ->update([
+                        'point_2' => $participant->point_2+3
+                    ]);
+                }
+                elseif ($request->answer[$participant->id] == 'Z')
+                {
+                    Participant::where('id', $participant->id)
+                    ->update([
+                        'point_2' => $participant->point_2+0
+                    ]);
+                }
+                else
+                {
+                    Participant::where('id', $participant->id)
+                    ->update([
+                        'point_2' => $participant->point_2-1
+                    ]);
+                }
+            }
+
         }
-        dump($question->id);
-        dump($question->answer_key);
+
+        $next = Question::where('id', '>', $question->id)->orderBy('id')->first();
+        return redirect('/observer/competition/answer/'.$next->id);
             
     }
 }
