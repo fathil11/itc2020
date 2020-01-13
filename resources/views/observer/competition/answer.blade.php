@@ -58,7 +58,7 @@
                     <option value="Z">Tidak Menjawab</option>
                 </select>
                 </div>
-            {{-- @elseif ($question->session == 3)
+            @elseif ($question->session == 3)
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                     <label class="input-group-text" for="answer">Jawaban</label>
@@ -77,13 +77,14 @@
                     </div>
                 <select class="custom-select" id="answer" name="answer[{{ $participant->id }}]">
                     <option disabled>Choose...</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
+                    <option value="5">+5</option>
+                    <option value="4">+4</option>
+                    <option value="3">+3</option>
+                    <option value="2">+2</option>
+                    <option value="1">+1</option>
+                    <option value="0">0 (Tidak Menjawab)</option>
                 </select>
-                </div> --}}
+                </div>
             @else    
             @endif
             @else

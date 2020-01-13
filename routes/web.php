@@ -87,7 +87,7 @@ Route::group(['middleware' => ['admin','auth'], 'prefix' => 'admin'], function()
 
 
 // Observer Route
-Route::group(['middleware' => ['auth'], 'prefix' => 'observer'], function(){
+Route::group(['middleware' => ['auth','observer'], 'prefix' => 'observer'], function(){
     // Participant
     // Route::group(['prefix' => 'participant'], function(){
     //     // Table

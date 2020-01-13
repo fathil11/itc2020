@@ -72,6 +72,13 @@ class ObserverCompetitionController extends Controller
                     ]);
                 }
             }
+            elseif ($question->session == 4 && $participant->status == 4)
+            {
+                Participant::where('id', $participant->id)
+                ->update([
+                    'point_4' => $participant->point_4+$request->answer[$participant->id]
+                ]);
+            }
 
         }
 
