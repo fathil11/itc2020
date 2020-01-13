@@ -131,3 +131,7 @@ Route::get('/admin', function () {
     $question = Question::first();
     return view('admin.index')->with(compact('question'));
 })->middleware(['admin','auth']);
+
+Route::get('/participant', function () {
+    return view('participant.index');
+})->middleware(['finale','auth']);
