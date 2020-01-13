@@ -63,11 +63,30 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        if ($data['key-access'] == 176)
+        if ($data['key-access'] == 'macanfasilkom')
         {
             return User::create([
                 'name' => $data['name'],
                 'email' => $data['email'],
+                'role' => 'observer',
+                'password' => Hash::make($data['password']),
+            ]);
+        }
+        elseif ($data['key-access'] == 'integrity')
+        {
+            return User::create([
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'role' => 'admin',
+                'password' => Hash::make($data['password']),
+            ]);
+        }
+        elseif ($data['key-access'] == 'itcfinal')
+        {
+            return User::create([
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'role' => 'participant',
                 'password' => Hash::make($data['password']),
             ]);
         }

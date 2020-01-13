@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 class AdminCompetitionController extends Controller
 {
     function showStatisticTable(){
-        $statistics = Participant::sortable()->paginate(10);
+        $statistics = Participant::sortable()->paginate(30);
         return view('/admin/competition/statistic')->with(compact('statistics'));
     }
 
