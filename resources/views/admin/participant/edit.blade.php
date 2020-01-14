@@ -11,11 +11,11 @@
     <title>Edit Question</title>
   </head>
   <body>
-    <div class="container">
+    <div class="container my-5">
         <h3>Form Ubah Data Soal</h3>
         <div class="row">
             <div class="col-8">
-                <form method="post" action="{{ url('admin/participant/table/'.$participant->id) }}" class="my-5">
+                <form method="post" action="{{ url('admin/participant/table/'.$participant->id) }}" class="my-3">
                     @method('patch')
                     @csrf
                     <div class="form-group">

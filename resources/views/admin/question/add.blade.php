@@ -11,11 +11,11 @@
     <title>Add Question</title>
   </head>
   <body>
-    <div class="container">
+    <div class="container my-5">
         <h3>Form Tambah Soal</h3>
         <div class="row">
             <div class="col-8">
-                <form method="post" action="{{ url('admin/question/table') }}" class="my-5">
+                <form method="post" action="{{ url('admin/question/table') }}" class="my-3">
                     @csrf
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">

@@ -2,16 +2,19 @@
 
 @section('content')
 <div class="container my-5">
-    <h3>Data Peserta</h3>
-    <div class="row">
-        <div class="col">
+  <div class="row justify-content-center">
+    <div class="col-sm-10">
+      <h3>Data Peserta</h3>
+    </div>
+  </div>
+    <div class="row justify-content-center">
+        <div class="col-sm-10">
           <table class="table">
             <thead class="thead-dark">
                 <tr>
                   <th scope="col">No</th>
-                  <th scope="col">Name</th>
-                  <th scope="col">School</th>
-                  <th scope="col">Absent</th>
+                  <th scope="col">Nama</th>
+                  <th scope="col">Sekolah</th>
                   <th scope="col">Point 1</th>
                   <th scope="col">Point 2</th>
                   <th scope="col">Point 3</th>
@@ -25,7 +28,6 @@
                     <td scope="row">{{ $participant->id }}</td>
                     <td scope="row">{{ $participant->name }}</td>
                     <td scope="row">{{ $participant->school }}</td>
-                    <td scope="row">{{ $participant->absent }}</td>
                     <td scope="row">{{ $participant->point_1 }}</td>
                     <td scope="row">{{ $participant->point_2 }}</td>
                     <td scope="row">{{ $participant->point_3 }}</td>

@@ -9,9 +9,10 @@
               <thead class="thead-dark">
                   <tr>
                     <th scope="col">No</th>
-                    <th scope="col">Name</th>
+                    <th scope="col">Id</th>
+                    <th scope="col">Nama</th>
                     <th scope="col">Email</th>
-                    <th scope="col">Role</th>
+                    <th scope="col">Status</th>
                     <th scope="col">Token</th>
                     <th scope="col" colspan="2" class="text-center">Aksi</th>
                   </tr>
@@ -20,6 +21,7 @@
                   @foreach ($observers as $observer)
                     <tr>
                       <td scope="row">{{ $loop->iteration }}</td>
+                      <td scope="row">{{ $observer->id }}</td>
                       <td scope="row">{{ $observer->name }}</td>
                       <td scope="row">{{ $observer->email }}</td>
                       <td scope="row">{{ $observer->role }}</td>

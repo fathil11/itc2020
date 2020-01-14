@@ -9,9 +9,10 @@
             <thead class="thead-dark">
               <tr>
                 <th scope="col">No</th>
-                <th scope="col">Name</th>
-                <th scope="col">School</th>
-                <th scope="col">Absent</th>
+                <th scope="col">Id</th>
+                <th scope="col">Nama</th>
+                <th scope="col">Sekolah</th>
+                <th scope="col">Absen</th>
                 <th scope="col">Point 1</th>
                 <th scope="col">Point 2</th>
                 <th scope="col">Point 3</th>
@@ -24,6 +25,7 @@
               @foreach ($participants as $participant)
                 <tr>
                   <td scope="row">{{ $loop->iteration }}</td>
+                  <td scope="row">{{ $participant->id }}</td>
                   <td scope="row">{{ $participant->name }}</td>
                   <td scope="row">{{ $participant->school }}</td>
                   <td scope="row">{{ $participant->absent }}</td>

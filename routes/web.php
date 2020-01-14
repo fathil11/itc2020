@@ -113,8 +113,8 @@ Route::group(['middleware' => ['auth','observer'], 'prefix' => 'observer'], func
 });
 
 // Public Route
-Route::get('/soal', 'PublicController@showSoal');
-Route::get('/peserta', 'PublicController@showPeserta');
+Route::get('/soal', 'PublicController@showSoal')->middleware('auth');
+Route::get('/peserta', 'PublicController@showPeserta')->middleware('auth');
 
 
 Auth::routes();

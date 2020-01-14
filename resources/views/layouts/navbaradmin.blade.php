@@ -12,7 +12,7 @@
         <a class="nav-link" href="/admin/observer/table">Pengawas</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="/admin/competition/statistic">Lomba</a>
+        <a class="nav-link" href="/admin/competition/statistic">Statistik</a>
     </li>
 </ul>
 @endsection

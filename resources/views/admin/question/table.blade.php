@@ -9,6 +9,7 @@
                         <thead class="thead-dark">
                             <tr>
                                 <th scope="col">No</th>
+                                <th scope="col">Id</th>
                                 <th scope="col">Sesi</th>
                                 <th scope="col">Soal</th>
                                 <th scope="col">Kunci Jawaban</th>
@@ -23,6 +24,7 @@
                             @foreach ($questions as $question)
                             <tr>
                                 <td scope="row">{{ $loop->iteration }}</td>
+                                <td scope="row">{{ $question->id }}</td>
                                 <td scope="row">{{ $question->session }}</td>
                                 <td scope="row">{{ $question->question }}</td>
                                 <td scope="row">{{ $question->answer_key }}</td>

@@ -1,19 +1,18 @@
-
-@extends('layouts.navbaradmin')
+@extends('layouts.app')
 
 @section('customstyle')
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 <style>
-  th a{
-      color: white !important;
-      text-decoration: none !important;
-  }
-  th a:hover{
-      color: white !important;
-      text-decoration: none !important;
-  }
+    th a{
+        color: white !important;
+        text-decoration: none !important;
+    }
+    th a:hover{
+        color: white !important;
+        text-decoration: none !important;
+    }
 </style>
 @endsection
 
@@ -25,15 +24,14 @@
         <table class="table">
           <thead class="thead-dark">
               <tr>
-                <th scope="col">@sortablelink('id')</th>
-                <th scope="col">@sortablelink('name')</th>
-                <th scope="col">@sortablelink('school')</th>
-                <th scope="col">@sortablelink('point_1')</th>
-                <th scope="col">@sortablelink('point_2')</th>
-                <th scope="col">@sortablelink('point_3')</th>
-                <th scope="col">@sortablelink('point_4')</th>
+                <th scope="col">@sortablelink('id', 'No')</th>
+                <th scope="col">@sortablelink('name', 'Nama')</th>
+                <th scope="col">@sortablelink('school', 'Sekolah')</th>
+                <th scope="col">@sortablelink('point_1', 'Point 1')</th>
+                <th scope="col">@sortablelink('point_2', 'Point 2')</th>
+                <th scope="col">@sortablelink('point_3', 'Point 3')</th>
+                <th scope="col">@sortablelink('point_4', 'Point 4')</th>
                 <th scope="col">@sortablelink('status')</th>
-                <th scope="col" class="a" colspan="2">Update Status</th>
               </tr>
             </thead>
             <tbody>
@@ -48,19 +46,7 @@
                         <td scope="row">{{ $statistic->point_3 }}</td>
                         <td scope="row">{{ $statistic->point_4 }}</td>
                         <td scope="row">{{ $statistic->status }}</td>
-                        <td>
-                          <form action="{{ url('admin/competition/statistic/'.$statistic->id) }}" method="post" class="d-inline-flex mx-3">
-                            @csrf
-                            @method('put')
-                            <button type="submit" class="badge badge-success">+</button>
-                          </form>
-                          <form action="{{ url('admin/competition/statistic/'.$statistic->id) }}" method="post" class="d-inline-flex mx-3">
-                            @csrf
-                            @method('patch')
-                            <button type="submit" class="badge badge-danger">-</button>
-                          </form>
-                        </td>
-                      </tr>
+                    </tr>
                     @endforeach
                 @endif
             </tbody>

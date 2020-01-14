@@ -35,7 +35,7 @@
                             </div>
                             <div class="align-items-end flex-column bd-highlight mb-5">  
                                 <h4 class="text-center">{{ $participant->name }}</h4>
-                                <h5 class="text-center">{{ $participant->school }}</h5>
+                                <h5 class="text-center">{{ $participant->id }}</h5>
                             </div>
                         </div>
                     </div>
