@@ -20,13 +20,13 @@
                     <h5>Soal {{ $question->id }}</h5>
                 @elseif ($question->session == 2)
                     <h4>Penyisihan 2</h4>
-                    <h5>Soal {{ $question->id }}</h5>
+                    <h5>Soal {{ $question->id-30 }}</h5>
                 @elseif ($question->session == 3)
                     <h4>Final 1</h4>
-                    <h5>Soal {{ $question->id }}</h5>
+                    <h5>Soal {{ $question->id-50 }}</h5>
                 @elseif ($question->session == 4)
                     <h4>Final 2</h4>
-                    <h5>Soal {{ $question->id }}</h5>
+                    <h5>Soal {{ $question->id-60 }}</h5>
                 @else    
                 @endif
             @foreach ($participants as $participant)

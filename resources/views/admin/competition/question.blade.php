@@ -42,7 +42,6 @@
                     <h2>A. {{ $question->option_a }}</h2>
                     <h2>B. {{ $question->option_b }}</h2>
                     <h2>C. {{ $question->option_c }}</h2>
-                    <h2>D. {{ $question->option_d }}</h2>
                 @elseif ($question->session == 4)
                 @else    
                 @endif

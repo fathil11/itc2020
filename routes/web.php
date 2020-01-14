@@ -99,7 +99,7 @@ Route::group(['middleware' => ['auth','observer'], 'prefix' => 'observer'], func
     //     Route::get('add', 'ObserverParticipantController@showAddParticipant');
     //     Route::post('add', 'ObserverParticipantController@addParticipant');
         
-    Route::get('/', 'ObserverParticipantController@showParticipantsTable')->middleware(['auth']);
+    Route::get('/', 'ObserverParticipantController@showParticipantsTable');
     //     // Delete
     //     Route::delete('delete', 'ObserverParticipantController@deleteParticipant');
     // });
@@ -132,6 +132,6 @@ Route::get('/admin', function () {
     return view('admin.index')->with(compact('question'));
 })->middleware(['admin','auth']);
 
-Route::get('/participant', function () {
-    return view('participant.index');
-})->middleware(['finale','auth']);
+Route::get('/participant', 'ParticipantCompetitionController@show')->middleware(['finale','auth']);
+Route::get('/participant/final/{question}', 'ParticipantCompetitionController@finale')->middleware(['finale','auth']);
+Route::patch('/participant/final/{question}', 'ParticipantCompetitionController@finaleSubmit')->middleware(['finale','auth']);
