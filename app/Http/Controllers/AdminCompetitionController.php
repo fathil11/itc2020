@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 class AdminCompetitionController extends Controller
 {
     function adminPanel(){
-        $question = Question::firstOrFail();
+        $question = Question::first();
         return view('admin.index')->with(compact('question'));
     }
 
