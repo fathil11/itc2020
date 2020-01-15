@@ -11,19 +11,19 @@
     <title>Add Question</title>
   </head>
   <body>
-    <div class="container">
+    <div class="container my-5">
         <h3>Form Tambah Soal</h3>
         <div class="row">
             <div class="col-8">
-                <form method="post" action="{{ url('admin/question/table') }}" class="my-5">
+                <form method="post" action="{{ url('admin/question/table') }}" class="my-3">
                     @csrf
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                           <label class="input-group-text" for="session">Sesi</label>
                         </div>
                         <select class="custom-select" id="session" name="session">
-                          <option selected>Choose...</option>
-                          <option value="1">Penyisihan 1</option>
+                          <option disabled>Choose...</option>
+                            <option value="1">Penyisihan 1</option>
                           <option value="2">Penyisihan 2</option>
                           <option value="3">Final 1</option>
                           <option value="4">Final 2</option>

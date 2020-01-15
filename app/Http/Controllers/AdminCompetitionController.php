@@ -2,11 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Question;
+use App\Participant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AdminCompetitionController extends Controller
 {
-    function showStatisticTable(){}
+    function showStatisticTable(){
+        $statistics = Participant::sortable()->paginate(30);
+        return view('/admin/competition/statistic')->with(compact('statistics'));
+    }
 
     function showBan($id){}
 
@@ -14,11 +20,36 @@ class AdminCompetitionController extends Controller
 
     function showSessionPanel(){}
 
-    function nextQuestion(){}
+    // function nextQuestion(){}
+    // function previousQuestion(){}
+    function showQuestion($id){
+        $question = Question::where('id', $id)->firstOrFail();
 
-    function previousQuestion(){}
+        $previous = Question::where('id', '<', $question->id)->orderBy('id','desc')->first();
 
-    function nextSession(){}
+        $next = Question::where('id', '>', $question->id)->orderBy('id')->first();
 
-    function previousSession(){}
+        return view('/admin/competition/question')->with(compact('question','previous','next'));
+    }
+
+    function updateStatusInc($id, Participant $participant){
+        $user = Participant::where('id', $id)->first();
+        Participant::where('id', $id)
+                ->update([
+                    'status' => $user->status+1
+                ]);
+            return back();
+    }
+
+    function updateStatusDec($id, Participant $participant){
+        $user = Participant::where('id', $id)->first();
+        Participant::where('id', $id)
+        ->update([
+            'status' => $user->status-1
+        ]);
+        return back();
+    }
+
+    // function nextSession(){}
+    // function previousSession(){}
 }

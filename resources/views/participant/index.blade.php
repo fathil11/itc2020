@@ -17,13 +17,13 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
     <!-- Styles -->
-    @yield('customstyle')
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+        <nav class="navbar navbar-expand-md navbar-light navbar-laravel fixed-top">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
@@ -72,9 +72,15 @@
             </div>
         </nav>
 
-        <main class="py-4">
-            @yield('content')
-        </main>
+        <div class="container"> 
+            <div class="row min-vh-100 justify-content-center text-center">
+                <div class="d-flex flex-column my-auto">
+                    <h1>ITC</h1>
+                    <h2 class="mb-5">2020</h2>
+                    <a href="{{ url('/participant/final/'.$question->id) }}" class="btn btn-primary">Mulai</a>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 </html>

@@ -2,19 +2,29 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AdminObserverController extends Controller
 {
-    function showObserversTable(){}
+    ///index
+    function showObserversTable(User $user){
+        $observers = User::all();
+        return view('/admin/observer/table',['observers' => $observers]);
+    }
 
-    function showAddObserver(){}
+    // function showAddObserver(){}
 
-    function addObserver(){}
+    // function addObserver(){}
 
-    function showUpdateObserver($id){}
+    // function showUpdateObserver($id){}
 
-    function updateObserver($id){}
+    // function updateObserver($id){}
 
-    function deleteObserver($id){}
+    //destroy
+    function deleteObserver(User $user){
+        User::destroy($user->id);
+        return redirect('/admin/observer/table')->with('status', 'Data Berhasil Dihapus');
+    }
 }

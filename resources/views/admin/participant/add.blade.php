@@ -11,11 +11,11 @@
     <title>Add Participant</title>
   </head>
   <body>
-    <div class="container">
+    <div class="container my-5">
         <h3>Form Tambah Peserta</h3>
         <div class="row">
             <div class="col-8">
-                <form method="post" action="{{ url('admin/participant/table') }}" class="my-5">
+                <form method="post" action="{{ url('admin/participant/table') }}" class="my-3">
                     @csrf
                     <div class="form-group">
                         <label for="name">Nama</label>
