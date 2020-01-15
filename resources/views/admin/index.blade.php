@@ -15,10 +15,14 @@
     </div>
     <div class="row my-4">
         <div class="col mx-auto">
-            <a href="{{ url('/admin/competition/statistic') }}" class="btn btn-secondary" style="width: 200px;">Statistic</a>
+            <a href="{{ url('/admin/competition/statistic') }}" class="btn btn-secondary"
+                style="width: 200px;">Statistic</a>
         </div>
         <div class="col mx-auto">
-            <a href="{{ url('/admin/competition/question/'.$question->id) }}" class="btn btn-warning" style="width: 200px;">Tampil Soal</a>
+            @if (isset($question))
+            <a href="{{ url('/admin/competition/question/'.$question->id) }}" class="btn btn-warning"
+                style="width: 200px;">Tampil Soal</a>
+            @endif
         </div>
         <div class="col mx-auto">
             <div style="width: 200px;"></div>
