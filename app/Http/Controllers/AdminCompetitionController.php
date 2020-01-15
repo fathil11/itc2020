@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\DB;
 
 class AdminCompetitionController extends Controller
 {
+    function adminPanel(){
+        $question = Question::firstOrFail();
+        return view('admin.index')->with(compact('question'));
+    }
+
     function showStatisticTable(){
         $statistics = Participant::sortable()->paginate(30);
         return view('/admin/competition/statistic')->with(compact('statistics'));

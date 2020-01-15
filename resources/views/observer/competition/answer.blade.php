@@ -31,7 +31,7 @@
                 @endif
             @foreach ($participants as $participant)
             @if ($participant->status == $question->session)
-            <h3>{{ $participant->name }}</h3>
+            <h3>{{ $participant->id }}({{ $participant->name }})</h3>
             @if ($question->session == 1)
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">

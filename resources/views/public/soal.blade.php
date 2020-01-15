@@ -18,7 +18,7 @@
 
 @section('content')
   <div class="container my-5">
-    <h3>Data Peserta</h3>
+    <h3>Data Soal</h3>
     <div class="row">
       <div class="col">
         <table class="table">

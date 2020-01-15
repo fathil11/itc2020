@@ -11,8 +11,14 @@
 |
 */
 
+    use App\Question;
+    use App\User;
+    
 // Admin Routes
 Route::group(['middleware' => ['admin','auth'], 'prefix' => 'admin'], function(){
+
+    Route::get('/', 'AdminCompetitionController@adminPanel');
+    
     // Participant
     Route::group(['prefix' => 'participant'], function(){
         // Table
@@ -123,14 +129,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', function(){
     return view('welcome');
 });
-
-use App\Question;
-use App\User;
-
-Route::get('/admin', function () {
-    $question = Question::first();
-    return view('admin.index')->with(compact('question'));
-})->middleware(['admin','auth']);
 
 Route::get('/participant', 'ParticipantCompetitionController@show')->middleware(['finale','auth']);
 Route::get('/participant/final/{question}', 'ParticipantCompetitionController@finale')->middleware(['finale','auth']);
