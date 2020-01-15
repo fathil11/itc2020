@@ -119,14 +119,15 @@ Route::group(['middleware' => ['auth','observer'], 'prefix' => 'observer'], func
     // Competition
     Route::group(['prefix' => 'competition'], function(){
         // Answer
-        Route::get('answer/{question}', 'ObserverCompetitionController@showAnswer');
-        Route::patch('answer/{question}', 'ObserverCompetitionController@answer');
+        Route::get('answer', 'ObserverCompetitionController@showAnswer');
+        Route::patch('answer', 'ObserverCompetitionController@answer');
     });
 });
 
 // Public Route
-Route::get('/soal', 'PublicController@showSoal')->middleware('auth');
-Route::get('/peserta', 'PublicController@showPeserta')->middleware('auth');
+Route::get('/soal', 'PublicController@showQuestionTable');
+Route::get('/peserta', 'PublicController@showPeserta');
+Route::get('/lihat-soal', 'PublicController@showQuestion');
 
 
 Auth::routes();
