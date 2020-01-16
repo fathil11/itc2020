@@ -2,6 +2,10 @@
 @section('title', 'Peserta')
 @section('content')
 <h2 class="center teal-text"><b>Peserta</b></h2>
+<a href="{{ url('admin/participant/create') }}" class="btn waves-effect waves-light right" type="submit"><i
+    class="material-icons left">add_circle</i>Tambah
+  Peserta</a>
+<br>
 <div class="card mt-3">
   <div class="card-content">
     <table class="responsive-table centered highlight">
@@ -23,7 +27,7 @@
       <tbody>
         @foreach ($participants as $key=>$participant)
         <tr>
-          <td>1</td>
+          <td>{{ $key+1 }}</td>
           <td>{{ $participant->name }}</td>
           <td>{{ $participant->school }}</td>
           <td>{{ $participant->point_1 }}</td>
@@ -60,4 +64,12 @@
     </table>
   </div>
 </div>
+@endsection
+
+@section('js')
+@if (session('status'))
+<script>
+  M.toast({html: 'Berhasil', classes: 'rounded'});
+</script>
+@endif
 @endsection

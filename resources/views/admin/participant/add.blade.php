@@ -1,40 +1,34 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+@extends('layouts.adminLayout')
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+@section('title', 'Edit Peserta')
 
-    <title>Add Participant</title>
-  </head>
-  <body>
-    <div class="container my-5">
-        <h3>Form Tambah Peserta</h3>
-        <div class="row">
-            <div class="col-8">
-                <form method="post" action="{{ url('admin/participant/table') }}" class="my-3">
-                    @csrf
-                    <div class="form-group">
-                        <label for="name">Nama</label>
-                        <input type="text" class="form-control" id="name" placeholder="Masukkan Nama" name="name">
-                    </div>
-                    <div class="form-group">
-                        <label for="school">Sekolah</label>
-                        <input type="text" class="form-control" id="school" placeholder="Masukkan Sekolah" name="school">
-                    </div>
-                    <button type="submit" class="btn btn-primary">Tambah Data</button>
-                </form>
-            </div>
+@section('content')
+<h2 class="center teal-text"><b>Tambah Peserta</b></h2>
+<div class="card mt-3">
+  <div class="card-content center">
+    <div class="row">
+      <form method="post" action="{{ url('admin/participant/create') }}">
+        @csrf
+        @method('post')
+        <div class="input-field col s5">
+          <input id="name" type="text" name="name">
+          <label for="name">Nama</label>
         </div>
-    </div>
+        <div class="input-field col s5">
+          <input id="school" type="text" name="school">
+          <label for="school">Asal Sekolah</label>
+        </div>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-  </body>
-</html>
+        <div class="row">
+          <button class="btn btn-large teal waves-effect waves-light btn-block-40" type="submit"
+            name="action">Tambah</button>
+        </div>
+        <div class="row">
+        <a href="{{ url('admin/participant/table') }}" class="btn btn-large grey waves-effect waves-light btn-block-40" type="submit"
+            name="action">Kembali</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+@endsection

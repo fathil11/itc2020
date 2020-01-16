@@ -7,7 +7,7 @@
     <!--Import materialize.css-->
     <link type="text/css" rel="stylesheet" href="{{ asset('css/materialize.min.css') }}" media="screen,projection" />
     <link type="text/css" rel="stylesheet" href="{{ asset('css/custom.css') }}" media="screen,projection" />
-
+    @yield('customStyle')
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@yield('title')</title>
@@ -34,7 +34,7 @@
     <ul id="competition_controll" class="dropdown-content">
         <li><a href="{{ url('/admin/competition/statistic') }}">Statistik</a></li>
         <li><a href="{{ url('/admin/competition/session-panel') }}">Sesi</a></li>
-        <li><a href="{{ url('/admin/compeition/eliminate') }}">Eliminasi</a></li>
+        <li><a href="{{ url('/admin/competition/eliminate') }}">Eliminasi</a></li>
     </ul>
 
     <div class="container mt-4">
