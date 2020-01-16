@@ -22,13 +22,13 @@
                     <td>{{ $question->question }}</td>
                     <td>{{ $question->answer_key }}</td>
                     <td>
-                        {{ $question->option_a }}
-                        {{ $question->option_b }}
+                        A. {{ $question->option_a }}<br>
+                        B. {{ $question->option_b }}<br>
                         @if ($question->session == 3)
-                        {{ $question->option_c }}
+                        C. {{ $question->option_c }}
                         @elseif($question->session == 2)
-                        {{ $question->option_c }}
-                        {{ $question->option_d }}
+                        C. {{ $question->option_c }}<br>
+                        D. {{ $question->option_d }}
                         @endif
                     </td>
                     <td>
