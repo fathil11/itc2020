@@ -105,7 +105,7 @@ class AdminCompetitionController extends Controller
     //eliminasiz
     function showEliminate(){
         $status = CurrentStatus::first();
-        return view('/admin/competition/eliminate')->with(compact('status'));
+        return view('/admin/competition/elimination')->with(compact('status'));
     }
 
     //eliminasi
@@ -145,7 +145,7 @@ class AdminCompetitionController extends Controller
                 $index += 1;
             }
         }
-        return redirect('/admin/competition/eliminate')->with('status-eliminate', 'Eliminasi Berhasil');
+        return redirect('/admin/competition/eliminate')->with('status', 'Eliminasi Berhasil');
 }
 
     //eliminasi
