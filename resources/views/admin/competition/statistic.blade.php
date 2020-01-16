@@ -60,10 +60,15 @@
                 </button>
               </form>
 
-              <button class="btn waves-effect grey darken-1 waves-light tooltipped" data-position="top"
-                data-tooltip="Kick Peserta" type="submit" name="action">
-                <i class="material-icons">do_not_disturb_alt</i>
-              </button>
+              <form action="{{ url('admin/competition/statistic/kick/'.$participant->id) }}" method="post"
+                class="d-inline">
+                @csrf
+                @method('put')
+                <button class="btn waves-effect grey darken-1 waves-light tooltipped" data-position="top"
+                  data-tooltip="Kick Peserta" type="submit" name="action">
+                  <i class="material-icons">do_not_disturb_alt</i>
+                </button>
+              </form>
             </div>
           </td>
         </tr>

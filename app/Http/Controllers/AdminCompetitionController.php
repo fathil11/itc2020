@@ -44,7 +44,7 @@ class AdminCompetitionController extends Controller
             'status' => $user->status+1
             ]);
             return back();
-        }
+    }
        
     //statistik
     function updateStatusDec($id, Participant $participant){
@@ -54,7 +54,17 @@ class AdminCompetitionController extends Controller
             'status' => $user->status-1
             ]);
             return back();
-        }
+    }
+
+    //Kick Peserta
+    function kickParticipant($id, Participant $participant) {
+        $user = Participant::where('id', $id)->first();
+        Participant::where('id', $id)
+        ->update([
+            'status' => -1
+            ]);
+            return back();
+    }
 
     //panel sesi
     function showSessionPanel(){
