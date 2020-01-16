@@ -16,7 +16,7 @@ class CreateObserverParticipantTable extends Migration
         Schema::create('observer_participants', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('observer_id');
-            $table->bigInteger('parcipant_id');
+            $table->bigInteger('participant_id');
             $table->integer('session');
             $table->timestamps();
         });

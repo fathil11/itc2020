@@ -15,7 +15,7 @@
         <h3>Form Ubah Data Peserta</h3>
         <div class="row">
             <div class="col-8">
-                <form method="post" action="{{ url('admin/participant/table/'.$participant->id) }}" class="my-3">
+                <form method="post" action="{{ url('observer/'.$participant->id) }}" class="my-3">
                     @method('patch')
                     @csrf
                     <div class="form-group">

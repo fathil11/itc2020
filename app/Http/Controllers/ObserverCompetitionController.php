@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Auth;
 use App\User;
 use App\Participant;
+use App\ObserverParticipant;
 use App\Question;
 use App\CurrentStatus;
 use Illuminate\Http\Request;
@@ -17,7 +18,12 @@ class ObserverCompetitionController extends Controller
         $user = User::find($id);
         $status = CurrentStatus::first();
         $question = Question::where('id', $status->question)->first();
-        $participants = $user->participants()->get();
+        $watchs = ObserverParticipant::where('observer_id', $user->id)->where('session', $status->session)->get();
+        $participants = array();
+        foreach ($watchs as $watch) {
+            $participantss = Participant::where('id', $watch->participant_id)->get();
+            $participants = array_merge($participants, array_flatten($participantss));
+        }
         return view('/observer/competition/answer', ['question' => $question])->with(compact('participants','question'));
     }
 
@@ -26,7 +32,12 @@ class ObserverCompetitionController extends Controller
         $user = User::find($id);
         $status = CurrentStatus::first();
         $question = Question::where('id', $status->question)->first();
-        $participants = $user->participants()->get();
+        $watchs = ObserverParticipant::where('observer_id', $user->id)->where('session', $status->session)->get();
+        $participants = array();
+        foreach ($watchs as $watch) {
+            $participantss = Participant::where('id', $watch->participant_id)->get();
+            $participants = array_merge($participants, array_flatten($participantss));
+        }
         foreach ($participants as $participant) {
             # code...
             if ($question->session == 1 && $participant->status == 1)
@@ -85,8 +96,32 @@ class ObserverCompetitionController extends Controller
                 ]);
             }
         }
-
         return redirect('/observer/competition/answer/')->with('status', 'Jawaban Berhasil Diinput');
-            
+    }
+
+    function showUpdateParticipant(Participant $participant){
+        return view('/observer/edit', ['participant' => $participant]);
+    }
+
+    function updateParticipant(Request $request, Participant $participant){
+        $request->validate([
+            'name' => 'required',
+            'school' => 'required'
+        ]);
+
+        Participant::where('id', $participant->id)
+                ->update([
+                    'name' => $request->name,
+                    'school' => $request->school
+                ]);
+        return redirect ('/observer/table')->with('status', 'Data Berhasil Diubah');
+    }
+
+    function deleteParticipant(Participant $participant){
+        $id = Auth::user()->id;
+        $user = User::find($id);
+        $status = CurrentStatus::first();
+        ObserverParticipant::where('observer_id', $user->id)->where('participant_id', $participant->id)->delete();
+        return redirect ('/observer/table')->with('status', 'Data Berhasil Dihapus');
     }
 }
