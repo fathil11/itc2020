@@ -17,8 +17,8 @@ class AdminCompetitionController extends Controller
     }
     //statistik
     function showStatisticTable(){
-        $statistics = Participant::sortable()->paginate(30);
-        return view('/admin/competition/statistic')->with(compact('statistics'));
+        $participants = Participant::all();
+        return view('/admin/competition/statistic')->with(compact('participants'));
     }
 
     // function showBan($id){}
@@ -84,7 +84,7 @@ class AdminCompetitionController extends Controller
         $request->validate([
             'session' => 'required|numeric',
             'question' => 'required|numeric'
-        ]);
+            ]);
 
         CurrentStatus::where('id', $status->id)
                 ->update([

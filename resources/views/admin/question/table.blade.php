@@ -1,56 +1,58 @@
-@extends('layouts.navbaradmin')
-
+@extends('layouts.adminLayout')
+@section('title', 'Soal')
 @section('content')
-        <div class="container my-5">
-            <h3>Data Soal</h3>
-            <div class="row">
-                <div class="col">
-                    <table class="table">
-                        <thead class="thead-dark">
-                            <tr>
-                                <th scope="col">No</th>
-                                <th scope="col">Id</th>
-                                <th scope="col">Sesi</th>
-                                <th scope="col">Soal</th>
-                                <th scope="col">Kunci Jawaban</th>
-                                <th scope="col">Pilihan A</th>
-                                <th scope="col">Pilihan B</th>
-                                <th scope="col">Pilihan C</th>
-                                <th scope="col">Pilihan D</th>
-                                <th scope="col" colspan="2" class="text-center">Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($questions as $question)
-                            <tr>
-                                <td scope="row">{{ $loop->iteration }}</td>
-                                <td scope="row">{{ $question->id }}</td>
-                                <td scope="row">{{ $question->session }}</td>
-                                <td scope="row">{{ $question->question }}</td>
-                                <td scope="row">{{ $question->answer_key }}</td>
-                                <td scope="row">{{ $question->option_a }}</td>
-                                <td scope="row">{{ $question->option_b }}</td>
-                                <td scope="row">{{ $question->option_c }}</td>
-                                <td scope="row">{{ $question->option_d }}</td>
-                                <td>
-                                    <form action="{{ url('admin/question/'.$question->id.'/edit') }}" method="post" class="d-inline">
-                                        @csrf
-                                        <button type="submit" class="badge badge-success">Edit</button>
-                                    </form>
-                                    {{-- url('admin/question/table', ['id' => $question->id]) --}}
-                                    <form action="{{ url ('admin/question/table/'.$question->id) }}" method="post" class="d-inline">
-                                        @csrf
-                                        @method('delete')
-                                        <button type="submit" class="badge badge-danger">Delete</button>
-                                    </form>
-                                </td>
-                                <td><a href="{{ url ('admin/question/table/'.$question->id) }}" class="badge badge-primary">Show</a></td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                    <a href="{{ url('admin/question/add') }}" class="btn btn-primary my-3">Tambah Soal</a>
-                </div>
-            </div>
-        </div>
+<h2 class="center teal-text"><b>Soal</b></h2>
+<div class="card mt-3">
+    <div class="card-content">
+        <table class="responsive-table centered highlight">
+            <thead>
+                <tr>
+                    <th>No (Sesi)</th>
+                    <th>Soal</th>
+                    <th>Kunci</th>
+                    <th>Pilihan</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach ($questions as $question)
+                <tr>
+                    <td>{{ $question->id }} ({{ $question->session }})</td>
+                    <td>{{ $question->question }}</td>
+                    <td>{{ $question->answer_key }}</td>
+                    <td>
+                        {{ $question->option_a }}
+                        {{ $question->option_b }}
+                        @if ($question->session == 3)
+                        {{ $question->option_c }}
+                        @elseif($question->session == 2)
+                        {{ $question->option_c }}
+                        {{ $question->option_d }}
+                        @endif
+                    </td>
+                    <td>
+                        <form action="{{ url('admin/question/edit/' . $question->id) }}" method="post" class="d-inline">
+                            @csrf
+                            <button class="btn waves-effect amber darken-2 waves-light tooltipped" data-position="top"
+                                data-tooltip="Update Soal" type="submit" name="action">
+                                <i class="material-icons right">create</i>
+                            </button>
+                        </form>
+                        <form action="{{ url ('admin/question/table/delete/'.$question->id) }}" method="post"
+                            class="d-inline">
+                            @csrf
+                            @method('delete')
+                            <button class="btn waves-effect red waves-light tooltipped" data-position="top"
+                                data-tooltip="Delete Soal" type="submit" name="action">
+                                <i class="material-icons right">delete</i>
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+</div>
 @endsection

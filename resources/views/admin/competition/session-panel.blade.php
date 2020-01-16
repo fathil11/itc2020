@@ -1,49 +1,77 @@
-@extends('layouts.app')
+@extends('layouts.adminLayout')
 
-@section('customstyle')
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-@endsection
+@section('title', 'Panel Sesi')
 
-@section('content')    
-<div class="container">
-    @if (isset($status))
-    @if (session('status'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            {{ session('status') }}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    @endif
-    <div class="row justify-content-center mx-auto text-center min-vh-100">
-        <div class="col-12">
-            <h1>Sesi: {{ $status->session }}</h1>
-            <h1>Soal: {{ $status->question }}</h1>
-        </div>
-            <form action="/admin/competition/session-panel" method="post">
-                @csrf
-                @method('patch')              
-                <div class="form-group row">
-                    <label for="session" class="col-sm-2 col-form-label">Sesi</label>
-                    <div class="col-sm-10">
-                        <input type="number" class="form-control" id="session" name="session" value="{{ $status->session }}">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="question" class="col-sm-2 col-form-label">Soal</label>
-                    <div class="col-sm-10">
-                        <input type="number" class="form-control" id="question" name="question" value="{{ $status->question }}">
-                    </div>
-                </div>
-                <button type="submit" class="btn btn-primary">Update</button>
-            </form>
-    </div>
-    @else
-        <form action="" method="post">
+@section('content')
+<h2 class="center teal-text"><b>Kontrol Sesi</b></h2>
+<div class="card mt-3">
+    <div class="card-content center">
+        <form action="/admin/competition/session-panel" method="post">
             @csrf
-            @method('put')
-            <button type="submit" class="btn btn-primary">Mulai Sesi</button>
+            @method('patch')
+            <p class="radio-inline">
+                <label>
+                    <input name="session" type="radio" value="1" @if($status->session == 1) checked @endif/>
+                    <span>Sesi 1</span>
+                </label>
+            </p>
+            <p class="radio-inline">
+                <label>
+                    <input name="session" value="2" type="radio" @if($status->session == 2) checked @endif/>
+                    <span>Sesi 2</span>
+                </label>
+            </p>
+            <p class="radio-inline">
+                <label>
+                    <input name="session" value="3" type="radio" @if($status->session == 3) checked @endif/>
+                    <span>Sesi 3</span>
+                </label>
+            </p>
+            <p class="radio-inline">
+                <label>
+                    <input name="session" value="4" type="radio" @if($status->session == 4) checked @endif/>
+                    <span>Sesi 4</span>
+                </label>
+            </p>
+            <br>
+            <div class="mt-4">
+                <button type="button" id="question-min"
+                    class="btn-floating btn-large waves-effect waves-light red question-btn"><i
+                        class="material-icons">keyboard_arrow_left</i></button>
+                <input id="hidden-question-input" type="hidden" class="form-control" id="question" name="question"
+                    value="{{ $status->question }}">
+                <h2 id="question-number" class="d-inline question-number">{{ $status->question }}</h2>
+                <button type="button" id="question-plus"
+                    class="btn-floating btn-large waves-effect waves-light green question-btn"><i
+                        class="material-icons">keyboard_arrow_right</i></button>
+            </div>
+            <br>
+
+            <button class="btn btn-large waves-effect waves-light btn-block-40" type="submit"
+                name="submit">Submit</button>
         </form>
-    @endif
+    </div>
 </div>
+@endsection
+@section('js')
+@if (session('status'))
+<script>
+    M.toast({html: 'Berhasil di update', classes: 'rounded'});
+</script>
+@endif
+<script>
+    $(document).ready(function () {
+        var current_number = parseInt($("#question-number").text(), 10)
+        $("#question-min").on("click", function () {
+            var setNumber = current_number -= 1
+            $("#question-number").text(setNumber)
+            $("#hidden-question-input").val(setNumber)
+        })
+        $("#question-plus").on("click", function () {
+            var setNumber = current_number += 1
+            $("#question-number").text(setNumber)
+            $("#hidden-question-input").val(setNumber)
+        })
+    })
+</script>
 @endsection
