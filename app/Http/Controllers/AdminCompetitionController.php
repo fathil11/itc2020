@@ -59,18 +59,24 @@ class AdminCompetitionController extends Controller
     //panel sesi
     function showSessionPanel(){
         $status = CurrentStatus::first();
+        if ($status == null)
+        {
+            CurrentStatus::create([
+                'session' => 1,
+                'question' =>1
+            ]);
+        }
         return view('/admin/competition/session-panel')->with(compact('status'));
     }
 
     //panel sesi
-    function sessionPanel(){
-        CurrentStatus::create([
-            'session' => 1,
-            'question' =>1
-        ]);
-
-        return redirect('/admin/competition/session-panel');
-    }
+    // function sessionPanel(){
+    //     CurrentStatus::create([
+    //         'session' => 1,
+    //         'question' =>1
+    //     ]);
+    //     return redirect('/admin/competition/session-panel');
+    // }
 
     //panel sesi
     function updateSessionPanel(Request $request){

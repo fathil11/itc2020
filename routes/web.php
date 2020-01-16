@@ -86,7 +86,7 @@ Route::group(['middleware' => ['admin','auth'], 'prefix' => 'admin'], function()
         Route::get('question/{id}', 'AdminCompetitionController@showQuestion');
         // Session Panel
         Route::get('session-panel', 'AdminCompetitionController@showSessionPanel');
-        Route::put('session-panel', 'AdminCompetitionController@sessionPanel');
+        // Route::put('session-panel', 'AdminCompetitionController@sessionPanel');
         Route::patch('session-panel', 'AdminCompetitionController@updateSessionPanel');
         // // Next Session
         // Route::post('next-session', 'AdminCompetitionController@nextSession');
