@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Auth;
 use App\User;
 use App\Participant;
+use App\CurrentStatus;
 use App\Question;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -22,17 +23,21 @@ class ParticipantCompetitionController extends Controller
     public function finale(Question $question){
         $id = Auth::user()->id;
         $user = User::find($id);
+        $status = CurrentStatus::first();
+        $question = Question::where('id', $status->question)->first();
         $participant = $user->participants()->first();
-        return view('participant.final', ['question' => $question])->with(compact('participant'));
+        return view('participant.final', ['question' => $question])->with(compact('participant','question'));
     }
 
-    public function finaleSubmit(Request $request, Question $question){
+    public function finaleSubmit(Request $request){
         $request->validate([
             'bet' => 'required',
             'answer' => 'required'
         ]);
         $id = Auth::user()->id;
         $user = User::find($id);
+        $status = CurrentStatus::first();
+        $question = Question::where('id', $status->question)->first();
         $participant = $user->participants()->first();
         if ($request->bet >=0 && $request->bet/$participant->point_3 <= 0.5)
         {
@@ -42,8 +47,7 @@ class ParticipantCompetitionController extends Controller
                 ->update([
                     'point_3' => $participant->point_3+$request->bet
                 ]);
-                $next = Question::where('id', '>', $question->id)->orderBy('id')->first();
-                return redirect('/participant/final/'.$next->id)->with('status-true', 'Jawaban Benar');
+                return redirect('/participant/final/')->with('status-true', 'Jawaban Benar');
             }
             else
             {
@@ -51,8 +55,7 @@ class ParticipantCompetitionController extends Controller
                 ->update([
                     'point_3' => $participant->point_3-$request->bet
                 ]);
-                $next = Question::where('id', '>', $question->id)->orderBy('id')->first();
-                return redirect('/participant/final/'.$next->id)->with('status-false', 'Jawaban Salah');
+                return redirect('/participant/final/')->with('status-false', 'Jawaban Salah');
             }
         }
         else

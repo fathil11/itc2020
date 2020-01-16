@@ -118,7 +118,10 @@ class ObserverCompetitionController extends Controller
     }
 
     function deleteParticipant(Participant $participant){
-        Participant::destroy($participant->id);
+        $id = Auth::user()->id;
+        $user = User::find($id);
+        $status = CurrentStatus::first();
+        ObserverParticipant::where('observer_id', $user->id)->where('participant_id', $participant->id)->delete();
         return redirect ('/observer/table')->with('status', 'Data Berhasil Dihapus');
     }
 }

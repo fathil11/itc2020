@@ -77,6 +77,7 @@ Route::group(['middleware' => ['admin','auth'], 'prefix' => 'admin'], function()
         Route::get('statistic', 'AdminCompetitionController@showStatisticTable');
         Route::put('statistic/add-point/{id}', 'AdminCompetitionController@updateStatusInc');
         Route::put('statistic/min-point/{id}', 'AdminCompetitionController@updateStatusDec');
+        Route::put('statistic/kick/{id}', 'AdminCompetitionController@kickParticipant');
         
         // Ban
         // Route::get('ban/{id}', 'AdminCompetitionController@showBan');
@@ -139,6 +140,12 @@ Route::group(['middleware' => ['auth','observer'], 'prefix' => 'observer'], func
     });
 });
 
+Route::group(['middleware' => ['auth','finale'], 'prefix' => 'participant'], function(){
+    Route::get('/', 'ParticipantCompetitionController@show');
+    Route::get('final', 'ParticipantCompetitionController@finale');
+    Route::patch('final', 'ParticipantCompetitionController@finaleSubmit');
+});
+
 // Public Route
 Route::get('/soal', 'PublicController@showQuestionTable');
 Route::get('/peserta', 'PublicController@showPeserta');
@@ -151,7 +158,3 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', function(){
     return view('welcome');
 });
-
-Route::get('/participant', 'ParticipantCompetitionController@show')->middleware(['finale','auth']);
-Route::get('/participant/final/{question}', 'ParticipantCompetitionController@finale')->middleware(['finale','auth']);
-Route::patch('/participant/final/{question}', 'ParticipantCompetitionController@finaleSubmit')->middleware(['finale','auth']);

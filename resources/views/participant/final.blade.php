@@ -72,7 +72,7 @@
                                 </button>
                             </div>
                             @endif
-                        <form method="post" action="{{ url('participant/final/'.$question->id) }}" class="text-right">
+                        <form method="post" action="{{ url('participant/final/') }}" class="text-right">
                             @method('patch')
                             @csrf
                             <div class="form-group row justify-content-center">
