@@ -23,7 +23,7 @@
       <tbody>
         @foreach ($participants as $key=>$participant)
         <tr>
-          <td>1</td>
+          <td>{{ $key+1 }}</td>
           <td>{{ $participant->name }}</td>
           <td>{{ $participant->school }}</td>
           <td>{{ $participant->point_1 }}</td>

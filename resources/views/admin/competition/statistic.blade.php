@@ -1,4 +1,13 @@
 @extends('layouts.adminLayout')
+@section('customStyle')
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <style>
+      th a
+      {
+        color: #212121 !important;
+      }
+    </style>
+@endsection
 @section('title', 'Statistik')
 @section('content')
 <h2 class="center teal-text"><b>Peserta</b></h2>
@@ -8,13 +17,13 @@
       <thead>
         <tr>
           <th>Rank</th>
-          <th>No Peserta</th>
-          <th>Nama</th>
-          <th>S-1</th>
-          <th>S-2</th>
-          <th>S-3</th>
-          <th>S-4</th>
-          <th>Status</th>
+          <th>@sortablelink('id', 'No Peserta')</th>
+          <th>@sortablelink('name', 'Nama')</th>
+          <th>@sortablelink('point_1', 'S-1')</th>
+          <th>@sortablelink('point_2', 'S-2')</th>
+          <th>@sortablelink('point_3', 'S-3')</th>
+          <th>@sortablelink('point_4', 'S-4')</th>
+          <th>@sortablelink('status', 'Status')</th>
           <th>Aksi</th>
         </tr>
       </thead>
@@ -61,6 +70,9 @@
         @endforeach
       </tbody>
     </table>
+    <div class="mt-3">
+         {{$participants->links()}}
+    </div>
   </div>
 </div>
 </div>
