@@ -17,8 +17,9 @@ class AdminCompetitionController extends Controller
     }
     //statistik
     function showStatisticTable(){
+        $current = CurrentStatus::first();
         $participants = Participant::sortable()->paginate(10);
-        return view('/admin/competition/statistic')->with(compact('participants'));
+        return view('/admin/competition/statistic')->with(compact('participants', 'current'));
     }
 
     // function showBan($id){}

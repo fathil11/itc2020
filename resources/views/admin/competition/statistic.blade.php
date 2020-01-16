@@ -1,19 +1,19 @@
 @extends('layouts.adminLayout')
 @section('customStyle')
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    <style>
-      th a
-      {
-        color: #212121 !important;
-      }
-    </style>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+  integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<style>
+  th a {
+    color: #212121 !important;
+  }
+</style>
 @endsection
 @section('title', 'Statistik')
 @section('content')
 <h2 class="center teal-text"><b>Peserta</b></h2>
 <div class="card mt-3">
   <div class="card-content">
-    <table class="responsive-table centered highlight">
+    <table class="centered highlight">
       <thead>
         <tr>
           <th>Rank</th>
@@ -29,8 +29,9 @@
       </thead>
 
       <tbody>
-        <tr>
-          @foreach ($participants as $key => $participant)
+        @foreach ($participants as $key => $participant)
+        <tr
+          class="@if ($participant->status == -1) red accent-1 @elseif($participant->status == $current->session) teal lighten-3 @else yellow @endif">
           <td>{{ $key+1 }}</td>
           <td>{{ $participant->id }}</td>
           <td>{{ $participant->name }}</td>
@@ -76,7 +77,7 @@
       </tbody>
     </table>
     <div class="mt-3">
-         {{$participants->links()}}
+      {{$participants->links()}}
     </div>
   </div>
 </div>
