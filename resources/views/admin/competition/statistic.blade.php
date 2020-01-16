@@ -8,13 +8,13 @@
       <thead>
         <tr>
           <th>Rank</th>
-          <th>No Peserta</th>
-          <th>Nama</th>
-          <th>S-1</th>
-          <th>S-2</th>
-          <th>S-3</th>
-          <th>S-4</th>
-          <th>Status</th>
+          <th>@sortablelink('id', 'No Peserta')</th>
+          <th>@sortablelink('name', 'Nama')</th>
+          <th>@sortablelink('point_1', 'S-1')</th>
+          <th>@sortablelink('point_2', 'S-2')</th>
+          <th>@sortablelink('point_3', 'S-3')</th>
+          <th>@sortablelink('point_4', 'S-4')</th>
+          <th>@sortablelink('status', 'Status')</th>
           <th>Aksi</th>
         </tr>
       </thead>
@@ -61,6 +61,7 @@
         @endforeach
       </tbody>
     </table>
+    {!! $participants->appends(\Request::except('page'))->render() !!}
   </div>
 </div>
 </div>
