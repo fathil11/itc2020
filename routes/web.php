@@ -47,7 +47,7 @@ Route::group(['middleware' => ['admin','auth'], 'prefix' => 'admin'], function()
         Route::post('table', 'AdminQuestionController@addQuestion');
         
         // Update
-        Route::post('{question}/edit', 'AdminQuestionController@showUpdateQuestion');
+        Route::post('edit/{question}', 'AdminQuestionController@showUpdateQuestion');
         Route::patch('table/{question}', 'AdminQuestionController@updateQuestion');
         
         // Delete
@@ -118,6 +118,13 @@ Route::group(['middleware' => ['auth','observer'], 'prefix' => 'observer'], func
         
     Route::get('/', 'ObserverParticipantController@showParticipantsTable');
     Route::put('/', 'ObserverParticipantController@participants');
+    
+    // Update
+    Route::post('edit/{participant}', 'ObserverCompetitionController@showUpdateParticipant');
+    Route::patch('/{participant}', 'ObserverCompetitionController@updateParticipant');
+    
+    // Delete
+    Route::delete('/delete/{participant}', 'ObserverCompetitionController@deleteParticipant');
 
     Route::get('/table', 'ObserverParticipantController@participantsTable');
     //     // Delete
