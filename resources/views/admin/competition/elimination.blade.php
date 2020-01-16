@@ -7,11 +7,12 @@
 <div class="card mt-3">
     <div class="card-content center">
         <div class="row">
+            <h5 class="center teal-text"><b>Sesi : {{ $status->session }}</Sesi></b></h5>
             <form action="{{ url('admin/competition/eliminate') }}" method="post">
                 @csrf
                 @method('put')
                 <div class="input-field col s3">
-                    <input id="eliminate_number" max="2" type="number">
+                    <input id="eliminate_number" type="number" name="eliminate">
                     <label for="eliminate_number">Jumlah Peserta Dipertahankan</label>
                 </div>
         </div>
@@ -36,6 +37,11 @@
 @if (session('status'))
 <script>
     M.toast({html: 'Berhasil di update', classes: 'rounded'});
+</script>
+@endif
+@if (session('status-undo'))
+<script>
+    M.toast({html: 'Berhasil di undo', classes: 'rounded'});
 </script>
 @endif
 <script>

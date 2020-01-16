@@ -100,7 +100,7 @@ Route::group(['middleware' => ['admin','auth'], 'prefix' => 'admin'], function()
         // eliminate
         Route::get('eliminate', 'AdminCompetitionController@showEliminate');
         Route::put('eliminate', 'AdminCompetitionController@eliminate');
-        Route::patch('eliminate', 'AdminCompetitionController@undoEliminate');
+        Route::put('undo-eliminate', 'AdminCompetitionController@undoEliminate');
     });
 });
 

@@ -34,7 +34,7 @@
     <ul id="competition_controll" class="dropdown-content">
         <li><a href="{{ url('/admin/competition/statistic') }}">Statistik</a></li>
         <li><a href="{{ url('/admin/competition/session-panel') }}">Sesi</a></li>
-        <li><a href="#!">Eliminasi</a></li>
+        <li><a href="{{ url('/admin/competition/eliminate') }}">Eliminasi</a></li>
     </ul>
 
     <div class="container mt-4">
