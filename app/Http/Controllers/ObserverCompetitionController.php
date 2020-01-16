@@ -6,21 +6,26 @@ use Auth;
 use App\User;
 use App\Participant;
 use App\Question;
+use App\CurrentStatus;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class ObserverCompetitionController extends Controller
 {
-    function showAnswer(Question $question){
+    function showAnswer(){
         $id = Auth::user()->id;
         $user = User::find($id);
+        $status = CurrentStatus::first();
+        $question = Question::where('id', $status->question)->first();
         $participants = $user->participants()->get();
-        return view('/observer/competition/answer', ['question' => $question])->with(compact('participants'));
+        return view('/observer/competition/answer', ['question' => $question])->with(compact('participants','question'));
     }
 
-    function answer(Request $request, Question $question){
+    function answer(Request $request){
         $id = Auth::user()->id;
         $user = User::find($id);
+        $status = CurrentStatus::first();
+        $question = Question::where('id', $status->question)->first();
         $participants = $user->participants()->get();
         foreach ($participants as $participant) {
             # code...
@@ -79,11 +84,9 @@ class ObserverCompetitionController extends Controller
                     'point_4' => $participant->point_4+$request->answer[$participant->id]
                 ]);
             }
-
         }
 
-        $next = Question::where('id', '>', $question->id)->orderBy('id')->first();
-        return redirect('/observer/competition/answer/'.$next->id);
+        return redirect('/observer/competition/answer/')->with('status', 'Jawaban Berhasil Diinput');
             
     }
 }

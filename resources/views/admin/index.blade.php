@@ -25,7 +25,7 @@
             @endif
         </div>
         <div class="col mx-auto">
-            <div style="width: 200px;"></div>
+            <a href="{{ url('/admin/competition/session-panel') }}" class="btn btn-primary" style="width: 200px;">Panel Sesi</a>
         </div>
     </div>
 </div>

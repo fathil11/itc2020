@@ -82,14 +82,20 @@ Route::group(['middleware' => ['admin','auth'], 'prefix' => 'admin'], function()
         // Route::get('ban/{id}', 'AdminCompetitionController@showBan');
         // Route::post('ban/{id}', 'AdminCompetitionController@ban');
         
-        // Session Panel
-        // Route::get('session-panel', 'AdminCompetitionController@showSessionPanel');
         // Question
         Route::get('question/{id}', 'AdminCompetitionController@showQuestion');
-        // Next Session
-        // Route::get('next-session', 'AdminCompetitionController@nextSession');
-        // Previous Session
+        // Session Panel
+        Route::get('session-panel', 'AdminCompetitionController@showSessionPanel');
+        Route::put('session-panel', 'AdminCompetitionController@sessionPanel');
+        Route::patch('session-panel', 'AdminCompetitionController@updateSessionPanel');
+        // // Next Session
+        // Route::post('next-session', 'AdminCompetitionController@nextSession');
+        // // Previous Session
         // Route::get('previous-session', 'AdminCompetitionController@previousSession');
+        // // Next Session
+        // Route::get('next-question', 'AdminCompetitionController@nextQuestion');
+        // // Previous Session
+        // Route::get('previous-question', 'AdminCompetitionController@previousQuestion');
     });
 });
 
@@ -113,14 +119,15 @@ Route::group(['middleware' => ['auth','observer'], 'prefix' => 'observer'], func
     // Competition
     Route::group(['prefix' => 'competition'], function(){
         // Answer
-        Route::get('answer/{question}', 'ObserverCompetitionController@showAnswer');
-        Route::patch('answer/{question}', 'ObserverCompetitionController@answer');
+        Route::get('answer', 'ObserverCompetitionController@showAnswer');
+        Route::patch('answer', 'ObserverCompetitionController@answer');
     });
 });
 
 // Public Route
-Route::get('/soal', 'PublicController@showSoal')->middleware('auth');
-Route::get('/peserta', 'PublicController@showPeserta')->middleware('auth');
+Route::get('/soal', 'PublicController@showQuestionTable');
+Route::get('/peserta', 'PublicController@showPeserta');
+Route::get('/lihat-soal', 'PublicController@showQuestion');
 
 
 Auth::routes();

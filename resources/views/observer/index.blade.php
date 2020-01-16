@@ -41,7 +41,7 @@
         </tbody>
       </table>
       @if (isset($question))
-      <a href="{{ url('observer/competition/answer/'.$question->id) }}" class="btn btn-primary my-3">Input Jawaban</a>
+      <a href="{{ url('observer/competition/answer/') }}" class="btn btn-primary my-3">Input Jawaban</a>
       @endif
     </div>
   </div>
