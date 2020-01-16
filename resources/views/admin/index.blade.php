@@ -19,13 +19,11 @@
                 style="width: 200px;">Statistic</a>
         </div>
         <div class="col mx-auto">
-            @if (isset($question))
-            <a href="{{ url('/admin/competition/question/'.$question->id) }}" class="btn btn-warning"
-                style="width: 200px;">Tampil Soal</a>
-            @endif
+            <a href="{{ url('/admin/competition/session-panel') }}" class="btn btn-primary" style="width: 200px;">Panel Sesi</a>
         </div>
         <div class="col mx-auto">
-            <a href="{{ url('/admin/competition/session-panel') }}" class="btn btn-primary" style="width: 200px;">Panel Sesi</a>
+            <a href="{{ url('/admin/competition/eliminate') }}" class="btn btn-warning"
+                style="width: 200px;">Eliminasi</a>
         </div>
     </div>
 </div>

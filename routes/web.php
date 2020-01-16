@@ -96,6 +96,11 @@ Route::group(['middleware' => ['admin','auth'], 'prefix' => 'admin'], function()
         // Route::get('next-question', 'AdminCompetitionController@nextQuestion');
         // // Previous Session
         // Route::get('previous-question', 'AdminCompetitionController@previousQuestion');
+
+        // eliminate
+        Route::get('eliminate', 'AdminCompetitionController@showEliminate');
+        Route::put('eliminate', 'AdminCompetitionController@eliminate');
+        Route::patch('eliminate', 'AdminCompetitionController@undoEliminate');
     });
 });
 
