@@ -12,7 +12,7 @@
                 @csrf
                 @method('put')
                 <div class="input-field col s3">
-                    <input id="eliminate_number" type="number">
+                    <input id="eliminate_number" type="number" name="eliminate">
                     <label for="eliminate_number">Jumlah Peserta Dipertahankan</label>
                 </div>
         </div>
