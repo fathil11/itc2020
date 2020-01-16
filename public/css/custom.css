@@ -1,0 +1,101 @@
+.mt-1 {
+    margin-top: 10px;
+}
+
+.mt-2 {
+    margin-top: 20px;
+}
+
+.mt-3 {
+    margin-top: 30px;
+}
+
+.mt-4 {
+    margin-top: 40px;
+}
+
+.mt-5 {
+    margin-top: 50px;
+}
+
+.ml-1 {
+    margin-left: 10px;
+}
+
+.ml-2 {
+    margin-left: 20px;
+}
+
+.ml-3 {
+    margin-left: 30px;
+}
+
+.ml-4 {
+    margin-left: 40px;
+}
+
+.ml-5 {
+    margin-left: 50px;
+}
+
+.mr-1 {
+    margin-right: 10px;
+}
+
+.mr-2 {
+    margin-right: 20px;
+}
+
+.mr-3 {
+    margin-right: 30px;
+}
+
+.mr-4 {
+    margin-right: 40px;
+}
+
+.mr-5 {
+    margin-right: 50px;
+}
+
+
+/* Custom */
+i.right {
+    margin-left: 0;
+}
+
+.radio-inline {
+    display: inline;
+}
+
+p.radio-inline {
+    display: inline;
+    margin-right: 20px !important;
+}
+
+.d-inline {
+    display: inline !important;
+}
+
+.question-btn {
+    margin-bottom: 20px !important;
+}
+
+.question-number {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.btn-block-40 {
+    width: 40%;
+}
+
+.btn-block {
+    width: 100%;
+}
+
+.row .col {
+    float: none !important;
+    margin-left: auto;
+    margin-right: auto;
+}
