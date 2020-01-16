@@ -117,6 +117,9 @@ Route::group(['middleware' => ['auth','observer'], 'prefix' => 'observer'], func
     //     Route::post('add', 'ObserverParticipantController@addParticipant');
         
     Route::get('/', 'ObserverParticipantController@showParticipantsTable');
+    Route::put('/', 'ObserverParticipantController@participants');
+
+    Route::get('/table', 'ObserverParticipantController@participantsTable');
     //     // Delete
     //     Route::delete('delete', 'ObserverParticipantController@deleteParticipant');
     // });

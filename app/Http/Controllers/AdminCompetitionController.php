@@ -17,7 +17,7 @@ class AdminCompetitionController extends Controller
     }
     //statistik
     function showStatisticTable(){
-        $participants = Participant::sortable()->paginate(2);
+        $participants = Participant::sortable()->paginate(10);
         return view('/admin/competition/statistic')->with(compact('participants'));
     }
 
