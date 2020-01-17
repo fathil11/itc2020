@@ -158,3 +158,7 @@ Route::get('/lihat-soal', 'PublicController@showQuestion');
 Auth::routes();
 
 Route::get('/logout', 'HomeController@logout');
+
+Route::get('/', function () {
+    return redirect('/login');
+});
