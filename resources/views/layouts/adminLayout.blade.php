@@ -27,6 +27,9 @@
                 </li>
                 <li><a class="dropdown-trigger" href="#!" data-target="competition_controll">Kontrol Lomba<i
                             class="material-icons right">arrow_drop_down</i></a></li>
+                <li>
+                    <a href="{{ url('logout') }}">Logout</a>
+                </li>
             </ul>
         </div>
     </nav>
