@@ -43,12 +43,12 @@ Route::group(['middleware' => ['admin','auth'], 'prefix' => 'admin'], function()
         Route::get('table/{question}', 'AdminQuestionController@showQuestion');
         
         // Add
-        Route::get('add', 'AdminQuestionController@showAddQuestion');
-        Route::post('table', 'AdminQuestionController@addQuestion');
+        Route::get('create', 'AdminQuestionController@showAddQuestion');
+        Route::post('create', 'AdminQuestionController@addQuestion');
         
         // Update
         Route::post('edit/{question}', 'AdminQuestionController@showUpdateQuestion');
-        Route::patch('table/{question}', 'AdminQuestionController@updateQuestion');
+        Route::patch('edit/{question}', 'AdminQuestionController@updateQuestion');
         
         // Delete
         Route::delete('table/{question}', 'AdminQuestionController@deleteQuestion');

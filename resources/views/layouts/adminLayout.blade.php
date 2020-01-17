@@ -27,6 +27,9 @@
                 </li>
                 <li><a class="dropdown-trigger" href="#!" data-target="competition_controll">Kontrol Lomba<i
                             class="material-icons right">arrow_drop_down</i></a></li>
+                <li> <a class="dropdown-trigger" href="#!" data-target="competition_controlll">{{ Auth::user()->name }}<i
+                    class="material-icons right">arrow_drop_down</i></a>
+                </li>
             </ul>
         </div>
     </nav>
@@ -35,6 +38,18 @@
         <li><a href="{{ url('/admin/competition/statistic') }}">Statistik</a></li>
         <li><a href="{{ url('/admin/competition/session-panel') }}">Sesi</a></li>
         <li><a href="{{ url('/admin/competition/eliminate') }}">Eliminasi</a></li>
+    </ul>
+
+    <ul id="competition_controlll" class="dropdown-content">
+        <li><a href="{{ route('logout') }}"
+                onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">
+                {{ __('Logout') }}</a>
+
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
+        </li>
     </ul>
 
     <div class="container mt-4">

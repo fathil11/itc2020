@@ -2,6 +2,10 @@
 @section('title', 'Soal')
 @section('content')
 <h2 class="center teal-text"><b>Soal</b></h2>
+<a href="{{ url('admin/question/create') }}" class="btn waves-effect waves-light right" type="submit"><i
+    class="material-icons left">add_circle</i>Tambah
+  Soal</a>
+<br>
 <div class="card mt-3">
     <div class="card-content">
         <table class="responsive-table centered highlight">
@@ -22,13 +26,19 @@
                     <td>{{ $question->question }}</td>
                     <td>{{ $question->answer_key }}</td>
                     <td>
+                        @if ($question->session == 1)
+                        A. {{ $question->option_a }}<br>
+                        B. {{ $question->option_b }}
+                        @elseif ($question->session == 2)
                         A. {{ $question->option_a }}<br>
                         B. {{ $question->option_b }}<br>
-                        @if ($question->session == 3)
-                        C. {{ $question->option_c }}
-                        @elseif($question->session == 2)
                         C. {{ $question->option_c }}<br>
                         D. {{ $question->option_d }}
+                        @elseif ($question->session == 3)
+                        A. {{ $question->option_a }}<br>
+                        B. {{ $question->option_b }}<br>
+                        C. {{ $question->option_c }}
+                        @elseif ($question->session == 4)
                         @endif
                     </td>
                     <td>
@@ -39,7 +49,7 @@
                                 <i class="material-icons right">create</i>
                             </button>
                         </form>
-                        <form action="{{ url ('admin/question/table/delete/'.$question->id) }}" method="post"
+                        <form action="{{ url ('admin/question/table/'.$question->id) }}" method="post"
                             class="d-inline">
                             @csrf
                             @method('delete')
@@ -55,4 +65,12 @@
         </table>
     </div>
 </div>
+@endsection
+
+@section('js')
+@if (session('status'))
+<script>
+  M.toast({html: 'Berhasil', classes: 'rounded'});
+</script>
+@endif
 @endsection

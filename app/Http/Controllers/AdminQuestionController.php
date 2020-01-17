@@ -29,7 +29,6 @@ class AdminQuestionController extends Controller
             'question' => 'required',
             'answer_key' => 'required|size:1'
         ]);
-
         Question::create($request->all());
         return redirect ('/admin/question/table')->with('status', 'Data Berhasil Ditambahkan');
     }

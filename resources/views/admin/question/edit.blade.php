@@ -7,7 +7,7 @@
 <div class="card mt-3">
     <div class="card-content center">
         <div class="row">
-            <form method="post" action="{{ url('admin/question/table/'.$question->id) }}">
+            <form method="post" action="{{ url('admin/question/edit/'.$question->id) }}">
                 @csrf
                 @method('patch')
                 <div class="input-field col s6">
@@ -30,12 +30,10 @@
                     <input id="option_b" type="text" name="option_b" value="{{ $question->option_b }}">
                     <label for="option_b">Opsi B</label>
                 </div>
-                @if ($question->session == 3)
                 <div class="input-field col s6">
                     <input id="option_c" type="text" name="option_c" value="{{ $question->option_c }}">
                     <label for="option_c">Opsi C</label>
                 </div>
-                @elseif($question->session == 2)
                 <div class="input-field col s6">
                     <input id="option_c" type="text" name="option_c" value="{{ $question->option_c }}">
                     <label for="option_c">Opsi C</label>
@@ -44,7 +42,6 @@
                     <input id="option_d" type="text" name="option_d" value="{{ $question->option_d }}">
                     <label for="option_d">Opsi D</label>
                 </div>
-                @endif
 
                 <div class="row">
                     <button class="btn btn-large orange waves-effect waves-light btn-block-40" type="submit"

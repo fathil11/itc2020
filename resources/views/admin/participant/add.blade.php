@@ -11,11 +11,11 @@
         @csrf
         @method('post')
         <div class="input-field col s5">
-          <input id="name" type="text" name="name">
+          <input id="name" type="text" name="name" required>
           <label for="name">Nama</label>
         </div>
         <div class="input-field col s5">
-          <input id="school" type="text" name="school">
+          <input id="school" type="text" name="school" required>
           <label for="school">Asal Sekolah</label>
         </div>
 

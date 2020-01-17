@@ -36,7 +36,7 @@
                       <i class="material-icons right">update</i>
                     </button>
                   </form>
-                  <form action="{{ url ('observer/delete/'.$participant->id) }}" method="post"
+                  <form action="{{ url ('observer/table/'.$participant->id) }}" method="post"
                     class="d-inline">
                     @csrf
                     @method('delete')
