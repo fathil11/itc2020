@@ -1,4 +1,3 @@
-
 @extends('layouts.app')
 
 @section('content')
@@ -29,8 +28,9 @@
             <td scope="row">{{ $participant->school }}</td>
             <td scope="row">{{ $participant->status }}</td>
             <td>
-                <form action="{{ url('observer/edit/'.$participant->id) }}" method="post" class="d-inline">
+                <form action="{{ url('observer/update/'.$participant->id) }}" method="post" class="d-inline">
                     @csrf
+                    @method('post')
                     <button class="btn waves-effect amber darken-2 waves-light tooltipped" data-position="top"
                       data-tooltip="Update Peserta" type="submit" name="action">
                       <i class="material-icons right">update</i>

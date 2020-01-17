@@ -27,10 +27,10 @@ class LoginController extends Controller
      * @var string
      */
     public function redirectTo(){
-        
+
         // User role
-        $role = Auth::user()->role; 
-        
+        $role = Auth::user()->role;
+
         // Check user role
         switch ($role) {
             case 'admin':
@@ -38,12 +38,12 @@ class LoginController extends Controller
                 break;
             case 'observer':
                     return '/observer';
-                break; 
+                break;
             case 'participant':
                     return '/participant';
-                break; 
+                break;
             default:
-                    return '/login'; 
+                    return '/login';
                 break;
         }
     }

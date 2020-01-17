@@ -62,7 +62,7 @@
                             <div class="form-group row justify-content-center">
                                 <label for="bet" class="col-sm-2 col-form-label">Taruhan</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="bet" placeholder="Masukkan Taruhan" name="bet">
+                                    <input type="number" class="form-control" id="bet" placeholder="Masukkan Taruhan" name="bet" min="0" step="1">
                                 </div>
                             </div>
                             <div class="form-group row">
