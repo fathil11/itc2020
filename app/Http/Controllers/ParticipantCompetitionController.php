@@ -16,8 +16,8 @@ class ParticipantCompetitionController extends Controller
         $id = Auth::user()->id;
         $user = User::find($id);
         $question = Question::where('session', '3')->first();
-        $participants = $user->participants()->get();
-        return view('/participant/index')->with(compact('participants','question'));
+        $participant = $user->participants()->first();
+        return view('/participant/index')->with(compact('participant','question'));
     }
 
     public function finale(Question $question){
@@ -47,7 +47,7 @@ class ParticipantCompetitionController extends Controller
                 ->update([
                     'point_3' => $participant->point_3+$request->bet
                 ]);
-                return redirect('/participant/final/')->with('status-true', 'Jawaban Benar');
+                return redirect('/participant')->with('status-true', 'Jawaban Benar');
             }
             else
             {
@@ -55,7 +55,7 @@ class ParticipantCompetitionController extends Controller
                 ->update([
                     'point_3' => $participant->point_3-$request->bet
                 ]);
-                return redirect('/participant/final/')->with('status-false', 'Jawaban Salah');
+                return redirect('/participant')->with('status-false', 'Jawaban Salah');
             }
         }
         else

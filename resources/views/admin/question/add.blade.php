@@ -25,7 +25,13 @@
           <label for="question">Pertanyaan</label>
         </div>
         <div class="input-field col s5">
-          <input id="answer_key" type="text" name="answer_key" required>
+          <select id="answer_key" name="answer_key" required>
+            <option selected disabled>Choose...</option>
+              <option value="A">A</option>
+            <option value="B">B</option>
+            <option value="C">C</option>
+            <option value="D">D</option>
+          </select>
           <label for="answer_key">Kunci Jawaban</label>
         </div>
         <div class="input-field col s5">

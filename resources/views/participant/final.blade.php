@@ -48,22 +48,6 @@
                     <div class="col-6">
                         <h6 class="text-center">Score:</h6>
                         <h1 class="display-1 text-center mb-3">{{ $participant->point_3 }}</h1>
-                            @if (session('status-true'))
-                            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                {{ session('status-true') }}
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                  <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            @endif
-                            @if (session('status-false'))
-                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                {{ session('status-false') }}
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                  <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            @endif
                             @if (session('counter'))
                             <div class="alert alert-danger alert-dismissible fade show" role="alert">
                                 {{ session('counter') }}
