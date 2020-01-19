@@ -19,6 +19,6 @@ class ObserverMiddleware
         if (Auth::user()->role == 'observer' || Auth::user()->role == 'admin'){
             return $next($request);
         }
-        return redirect(url('/home'));
+        return redirect(url('/'));
     }
 }

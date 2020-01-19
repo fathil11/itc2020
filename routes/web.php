@@ -48,7 +48,7 @@ Route::group(['middleware' => ['admin','auth'], 'prefix' => 'admin'], function()
 
         // Update
         Route::post('edit/{question}', 'AdminQuestionController@showUpdateQuestion');
-        Route::patch('table/{question}', 'AdminQuestionController@updateQuestion');
+        Route::patch('edit/{question}', 'AdminQuestionController@updateQuestion');
 
         // Delete
         Route::delete('table/{question}', 'AdminQuestionController@deleteQuestion');
