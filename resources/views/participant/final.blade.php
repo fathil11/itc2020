@@ -33,17 +33,17 @@
                                     <h4>Final 1</h4>
                                     <h5>Soal {{ $question->id-50 }}</h5>
                             </div>
-                            <div class="align-items-end flex-column bd-highlight mb-5">  
+                            <div class="align-items-end flex-column bd-highlight mb-3">  
                                 <h4 class="text-center">{{ $participant->name }}</h4>
                                 <h5 class="text-center">{{ $participant->id }}</h5>
                             </div>
                         </div>
                     </div>
                     <div class="col-12">
-                        <h1>{{ $question->id-50 }}. {{ $question->question }}</h1>
-                        <h2>A. {{ $question->option_a }}</h2>
-                        <h2>B. {{ $question->option_b }}</h2>
-                        <h2>C. {{ $question->option_c }}</h2>
+                        <h1>{{ $question->question }}</h1>
+                        <h3>A. {{ $question->option_a }}</h3>
+                        <h3>B. {{ $question->option_b }}</h3>
+                        <h3>C. {{ $question->option_c }}</h3>
                     </div>
                     <div class="col-6">
                         <h6 class="text-center">Score:</h6>

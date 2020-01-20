@@ -14,3 +14,31 @@
     bottom: 0;
     right: 0;
 }
+
+.blue-btn {
+    border-radius: 10px !important;
+    color: #fff;
+    background-color: #4f84ec;
+    border-color: #4f84ec;
+}
+
+.yellow-btn {
+    border-radius: 10px !important;
+    color: #fff;
+    background-color: #fcbf3d;
+    border-color: #fcbf3d;
+}
+
+.green-btn {
+    border-radius: 10px !important;
+    color: #fff;
+    background-color: #7acc5d;
+    border-color: #7acc5d;
+}
+
+.red-btn {
+    border-radius: 10px !important;
+    color: #fff;
+    background-color: #ee6e73;
+    border-color: #ee6e73;
+}

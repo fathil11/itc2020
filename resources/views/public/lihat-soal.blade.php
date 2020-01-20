@@ -47,17 +47,23 @@
                     @endif
                     <br>
                     @if ($question->session == 1)
-                        <h3>A. {{ $question->option_a }}</h3>
-                        <h3>B. {{ $question->option_b }}</h3>
+                        <div class="btn-group-vertical">
+                            <h3 class="btn blue-btn btn-lg text-left"><b>A. {{ $question->option_a }}</b></h3>
+                            <h3 class="btn yellow-btn btn-lg text-left"><b>B. {{ $question->option_b }}</b></h3>
+                        </div>
                     @elseif ($question->session == 2)
-                        <h3>A. {{ $question->option_a }}</h3>
-                        <h3>B. {{ $question->option_b }}</h3>
-                        <h3>C. {{ $question->option_c }}</h3>
-                        <h3>D. {{ $question->option_d }}</h3>
+                        <div class="btn-group-vertical">
+                            <h3 class="btn blue-btn btn-lg text-left"><b>A. {{ $question->option_a }}</b></h3>
+                            <h3 class="btn yellow-btn btn-lg text-left"><b>B. {{ $question->option_b }}</b></h3>
+                            <h3 class="btn green-btn btn-lg text-left"><b>C. {{ $question->option_c }}</b></h3>
+                            <h3 class="btn red-btn btn-lg text-left"><b>D. {{ $question->option_d }}</b></h3>
+                        </div>
                     @elseif ($question->session == 3)
-                        <h3>A. {{ $question->option_a }}</h3>
-                        <h3>B. {{ $question->option_b }}</h3>
-                        <h3>C. {{ $question->option_c }}</h3>
+                        <div class="btn-group-vertical">
+                            <h3 class="btn blue-btn btn-lg text-left"><b>A. {{ $question->option_a }}</b></h3>
+                            <h3 class="btn yellow-btn btn-lg text-left"><b>B. {{ $question->option_b }}</b></h3>
+                            <h3 class="btn green-btn btn-lg text-left"><b>C. {{ $question->option_c }}</b></h3>
+                        </div>
                     @elseif ($question->session == 4)
                     @else    
                     @endif
