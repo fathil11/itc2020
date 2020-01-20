@@ -18,21 +18,14 @@
           <input id="school" type="text" name="school" value="{{ $participant->school }}">
           <label for="school">Asal Sekolah</label>
         </div>
-
-        <title>Edit Peserta</title>
-        </head>
-
-        <body>
-          <div class="container my-5">
-            <h3>Form Ubah Data Peserta</h3>
-            <div class="row">
-              <button class="btn btn-large orange waves-effect waves-light btn-block-40" type="submit"
-                name="action">Edit</button>
-            </div>
-            <div class="row">
-              <a href="{{ url('admin/participant/table') }}"
-                class="btn btn-large grey waves-effect waves-light btn-block-40" type="submit" name="action">Kembali</a>
-            </div>
+        <div class="row">
+          <button class="btn btn-large orange waves-effect waves-light btn-block-40" type="submit"
+            name="action">Edit</button>
+        </div>
+        <div class="row">
+          <a href="{{ url('admin/participant/table') }}"
+            class="btn btn-large grey waves-effect waves-light btn-block-40" type="submit" name="action">Kembali</a>
+        </div>
       </form>
     </div>
   </div>

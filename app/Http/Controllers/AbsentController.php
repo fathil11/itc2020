@@ -12,4 +12,19 @@ class AbsentController extends Controller
         return view('/absent/table', ['participants' => $participants]);
     }
 
+    function absent(Participant $participant){
+        Participant::where('id', $participant->id)
+            ->update([
+                'absent' => now()
+            ]);
+        return redirect ('/absent')->with('status', 'Hadir');
+    }
+
+    function absentCancel(Participant $participant){
+        Participant::where('id', $participant->id)
+            ->update([
+                'absent' => null
+            ]);
+        return redirect ('/absent')->with('status', 'Batalkan Hadir');
+    }
 }
