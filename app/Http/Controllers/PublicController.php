@@ -9,14 +9,10 @@ use Illuminate\Http\Request;
 
 class PublicController extends Controller
 {
-    function showQuestionTable(){
-        $statistics = Question::sortable()->paginate(10);
-        return view('/public/soal')->with(compact('statistics'));
-    }
-
     function showPeserta(){
-        $statistics = Participant::sortable()->paginate(2);
-        return view('/public/peserta')->with(compact('statistics'));
+        $current = CurrentStatus::first();
+        $statistics = Participant::sortable()->paginate(20);
+        return view('/public/peserta')->with(compact('statistics', 'current'));
     }
 
     function showQuestion(){

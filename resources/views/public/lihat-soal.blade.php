@@ -34,29 +34,30 @@
                         @endif
                     </div>
                     <br>
+                    <br>
                     @if ($question->session == 2)
                         @php
                             $splitQuestion = $question->question;
                             $premis = explode ("|", $splitQuestion);
                         @endphp
-                        <h1>{{ $premis[0] }}</h1>
-                        <h1>{{ $premis[1] }}</h1>
+                        <h2>{{ $premis[0] }}</h2>
+                        <h2>{{ $premis[1] }}</h2>
                     @else
-                        <h1>{{ $question->question }}</h1>
+                        <h2>{{ $question->question }}</h2>
                     @endif
                     <br>
                     @if ($question->session == 1)
-                        <h2>A. {{ $question->option_a }}</h2>
-                        <h2>B. {{ $question->option_b }}</h2>
+                        <h3>A. {{ $question->option_a }}</h3>
+                        <h3>B. {{ $question->option_b }}</h3>
                     @elseif ($question->session == 2)
-                        <h2>A. {{ $question->option_a }}</h2>
-                        <h2>B. {{ $question->option_b }}</h2>
-                        <h2>C. {{ $question->option_c }}</h2>
-                        <h2>D. {{ $question->option_d }}</h2>
+                        <h3>A. {{ $question->option_a }}</h3>
+                        <h3>B. {{ $question->option_b }}</h3>
+                        <h3>C. {{ $question->option_c }}</h3>
+                        <h3>D. {{ $question->option_d }}</h3>
                     @elseif ($question->session == 3)
-                        <h2>A. {{ $question->option_a }}</h2>
-                        <h2>B. {{ $question->option_b }}</h2>
-                        <h2>C. {{ $question->option_c }}</h2>
+                        <h3>A. {{ $question->option_a }}</h3>
+                        <h3>B. {{ $question->option_b }}</h3>
+                        <h3>C. {{ $question->option_c }}</h3>
                     @elseif ($question->session == 4)
                     @else    
                     @endif
