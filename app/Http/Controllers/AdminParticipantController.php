@@ -29,7 +29,7 @@ class AdminParticipantController extends Controller
         Participant::create([
             'name' => $request->name, 
             'school' => $request->school,
-            'absent' => now(),
+            'absent' => -,
             'point_1' => 0,
             'point_2' => 0,
             'point_3' => 20,
