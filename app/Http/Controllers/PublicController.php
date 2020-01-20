@@ -11,7 +11,7 @@ class PublicController extends Controller
 {
     function showPeserta(){
         $current = CurrentStatus::first();
-        $statistics = Participant::sortable()->paginate(20);
+        $statistics = Participant::sortable()->paginate(100);
         return view('/public/peserta')->with(compact('statistics', 'current'));
     }
 

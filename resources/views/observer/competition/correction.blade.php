@@ -34,6 +34,7 @@
                     <h5 class="my-none secondary-text"><b>{{ $participant->name }}</b></h5>
                 </div>
                 <div class="col s12 mt-3 center">
+                    @if ($question->session == 1)
                     <p class="inline">
                         <label>
                             <input name="answer[{{ $participant->id }}]" type="radio" value="A" />
@@ -46,28 +47,106 @@
                             <span class="yellow-radio">B</span>
                         </label>
                     </p>
-                    @if ($question->session == 2 || $question->session == 3)
-                    <p class="inline">
-                        <label>
-                            <input name="answer[{{ $participant->id }}]" type="radio" value="C" />
-                            <span class="green-radio">C</span>
-                        </label>
-                    </p>
-                    @if ($question->session == 2)
-                    <p class="inline">
-                        <label>
-                            <input name="answer[{{ $participant->id }}]" type="radio" value="D" />
-                            <span>D</span>
-                        </label>
-                    </p>
-                    @endif
-                    @endif
                     <p class="inline">
                         <label>
                             <input name="answer[{{ $participant->id }}]" type="radio" value="Z" />
                             <span class="gray-radio">-</span>
                         </label>
                     </p>
+                    @elseif ($question->session == 2)
+                    <p class="inline">
+                        <label>
+                            <input name="answer[{{ $participant->id }}]" type="radio" value="A" />
+                            <span class="blue-radio">A</span>
+                        </label>
+                    </p>
+                    <p class="inline">
+                        <label>
+                            <input name="answer[{{ $participant->id }}]" type="radio" value="B" />
+                            <span class="yellow-radio">B</span>
+                        </label>
+                    </p>
+                    <p class="inline">
+                        <label>
+                            <input name="answer[{{ $participant->id }}]" type="radio" value="C" />
+                            <span class="green-radio">C</span>
+                        </label>
+                    </p>
+                    <p class="inline">
+                        <label>
+                            <input name="answer[{{ $participant->id }}]" type="radio" value="D" />
+                            <span>D</span>
+                        </label>
+                    </p>
+                    <p class="inline">
+                        <label>
+                            <input name="answer[{{ $participant->id }}]" type="radio" value="Z" />
+                            <span class="gray-radio">-</span>
+                        </label>
+                    </p>
+                    @elseif ($question->session == 3)
+                    <p class="inline">
+                        <label>
+                            <input name="answer[{{ $participant->id }}]" type="radio" value="A" />
+                            <span class="blue-radio">A</span>
+                        </label>
+                    </p>
+                    <p class="inline">
+                        <label>
+                            <input name="answer[{{ $participant->id }}]" type="radio" value="B" />
+                            <span class="yellow-radio">B</span>
+                        </label>
+                    </p>
+                    <p class="inline">
+                        <label>
+                            <input name="answer[{{ $participant->id }}]" type="radio" value="C" />
+                            <span class="green-radio">C</span>
+                        </label>
+                    </p>
+                    <p class="inline">
+                        <label>
+                            <input name="answer[{{ $participant->id }}]" type="radio" value="Z" />
+                            <span class="gray-radio">-</span>
+                        </label>
+                    </p>
+                    @elseif ($question->session == 4)
+                    <p class="inline">
+                        <label>
+                            <input name="answer[{{ $participant->id }}]" type="radio" value="5" />
+                            <span class="blue-radio">+5</span>
+                        </label>
+                    </p>
+                    <p class="inline">
+                        <label>
+                            <input name="answer[{{ $participant->id }}]" type="radio" value="4" />
+                            <span class="yellow-radio">+4</span>
+                        </label>
+                    </p>
+                    <p class="inline">
+                        <label>
+                            <input name="answer[{{ $participant->id }}]" type="radio" value="3" />
+                            <span class="green-radio">+3</span>
+                        </label>
+                    </p>
+                    <p class="inline">
+                        <label>
+                            <input name="answer[{{ $participant->id }}]" type="radio" value="2" />
+                            <span class="gray-radio">+2</span>
+                        </label>
+                    </p>
+                    <p class="inline">
+                        <label>
+                            <input name="answer[{{ $participant->id }}]" type="radio" value="1" />
+                            <span class="gray-radio">+1</span>
+                        </label>
+                    </p>
+                    <p class="inline">
+                        <label>
+                            <input name="answer[{{ $participant->id }}]" type="radio" value="0" />
+                            <span class="gray-radio">+0</span>
+                        </label>
+                    </p>
+                    @endif
                 </div>
             </div>
         </div>

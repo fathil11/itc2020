@@ -24,7 +24,7 @@
 
 .yellow-btn {
     border-radius: 10px !important;
-    color: #fff;
+    color: black;
     background-color: #fcbf3d;
     border-color: #fcbf3d;
 }
@@ -38,7 +38,7 @@
 
 .red-btn {
     border-radius: 10px !important;
-    color: #fff;
+    color: black;
     background-color: #ee6e73;
     border-color: #ee6e73;
 }
