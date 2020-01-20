@@ -15,7 +15,7 @@ class AbsentController extends Controller
     function absent(Participant $participant){
         Participant::where('id', $participant->id)
             ->update([
-                'absent' => now()
+                'absent' => now()->addHours(7)
             ]);
         return redirect ('/absent')->with('status', 'Hadir');
     }
