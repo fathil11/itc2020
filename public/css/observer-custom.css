@@ -1,3 +1,7 @@
+.mt-0 {
+    margin-top: 0px;
+}
+
 .mt-1 {
     margin-top: 10px;
 }
@@ -36,6 +40,10 @@
 
 .mb-5 {
     margin-bottom: 50px;
+}
+
+.mb-bottom {
+    margin-bottom: 80px;
 }
 
 .ml-1 {
@@ -121,4 +129,59 @@ nav .brand-logo {
 
 .inline {
     display: inline;
+}
+
+[type=radio]:not(:checked)+span,
+[type=radio]:checked+span {
+    padding-left: 25px;
+    margin-right: 15px;
+}
+
+
+/* Blue Radio */
+[type=radio]:checked+span.blue-radio:after,
+[type=radio].with-gap:checked+span.blue-radio:after {
+    background-color: #4f84ec;
+}
+
+[type=radio]:checked+span.blue-radio:after,
+[type=radio].with-gap:checked+span.blue-radio:before,
+[type=radio].with-gap:checked+span.blue-radio:after {
+    border: 2px solid #4f84ec;
+}
+
+/* Yellow Radio */
+[type=radio]:checked+span.yellow-radio:after,
+[type=radio].with-gap:checked+span.yellow-radio:after {
+    background-color: #fcbf3d;
+}
+
+[type=radio]:checked+span.yellow-radio:after,
+[type=radio].with-gap:checked+span.yellow-radio:before,
+[type=radio].with-gap:checked+span.yellow-radio:after {
+    border: 2px solid #fcbf3d;
+}
+
+/* Green Radio */
+[type=radio]:checked+span.green-radio:after,
+[type=radio].with-gap:checked+span.green-radio:after {
+    background-color: #7acc5d;
+}
+
+[type=radio]:checked+span.green-radio:after,
+[type=radio].with-gap:checked+span.green-radio:before,
+[type=radio].with-gap:checked+span.green-radio:after {
+    border: 2px solid #7acc5d;
+}
+
+/* Gray Radio */
+[type=radio]:checked+span.gray-radio:after,
+[type=radio].with-gap:checked+span.gray-radio:after {
+    background-color: #969696;
+}
+
+[type=radio]:checked+span.gray-radio:after,
+[type=radio].with-gap:checked+span.gray-radio:before,
+[type=radio].with-gap:checked+span.gray-radio:after {
+    border: 2px solid #969696;
 }
