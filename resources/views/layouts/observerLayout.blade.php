@@ -35,8 +35,8 @@
                 <a href="#email"><span class="white-text email">{{ $detail[2]->email }}</span></a>
             </div>
         </li>
-        <li class="{{ (request()->is('observer')) ? 'active' : '' }}"><a class="waves-effect" href="{{ url('observer') }}"><i
-                    class="material-icons">home</i>Home</a></li>
+        <li class="{{ (request()->is('observer')) ? 'active' : '' }}"><a class="waves-effect"
+                href="{{ url('observer') }}"><i class="material-icons">home</i>Home</a></li>
         <li>
             <div class="divider"></div>
         </li>
@@ -56,13 +56,15 @@
                             class="material-icons">add_circle_outline</i>Input
                         Peserta</a></li>
                 <li class="{{ (request()->is('admin/participant/table')) ? 'active' : '' }}"><a class="waves-effect"
-                        href="{{ url('observer/participant/table') }}"><i class="material-icons">clear_all</i>Tabel Peserta</a>
+                        href="{{ url('observer/participant/table') }}"><i class="material-icons">clear_all</i>Tabel
+                        Peserta</a>
                 </li>
             </div>
 
             <div id="correction-menu">
                 <li><a class="subheader">Koreksi</a></li>
-            <li class=""><a class="waves-effect" href="{{ url('observer/competition') }}"><i class="material-icons">remove_red_eye</i>Koreksi
+                <li class=""><a class="waves-effect" href="{{ url('observer/competition') }}"><i
+                            class="material-icons">remove_red_eye</i>Koreksi
                         Jawaban</a></li>
             </div>
         </div>

@@ -73,9 +73,8 @@
         </div>
     </div>
     @endforeach
+    <div class="mt-1 mb-bottom">
+        <button type="submit" class="btn btn-large btn-block">Masukan Jawaban</button>
+    </div>
 </form>
-<div class="mt-1 mb-bottom">
-    <button type="submit" class="btn btn-large btn-block">Masukan Jawaban</button>
-</div>
-
 @endsection
