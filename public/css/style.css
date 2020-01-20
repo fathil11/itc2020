@@ -1,3 +1,16 @@
 .min-vh-80 {
     min-height: 80vh;
 }
+
+
+.bg-wave-head {
+    background-image: url("/svg/image1.svg");
+    background-size: 75vh;
+    background-repeat: no-repeat;
+}
+
+.fix-bt {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+}

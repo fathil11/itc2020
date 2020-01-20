@@ -1,4 +1,93 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="{{ asset('css/materialize.min.css') }}" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="{{ asset('css/custom.css') }}" media="screen,projection" />
+    @yield('customStyle')
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register</title>
+</head>
+
+<body class="grey lighten-4">
+    <nav>
+        <div class="nav-wrapper teal">
+          <a href="#" class="brand-logo"><img src="{{ asset('img/anmlogo.gif') }}" height="40" class="mt-1" alt="" srcset=""></a>
+          <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="{{ route('login') }}">Login</a></li>
+            <li><a href="{{ route('register') }}">Register</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <ul class="sidenav" id="mobile-demo">
+          <div class="background">
+              <li><a href="{{ route('login') }}">Login</a></li>
+              <li><a href="{{ route('register') }}">Register</a></li>
+          </div>
+      </ul>
+            
+    <div class="container mt-4">
+        <form method="POST" action="{{ route('register') }}">
+            @csrf
+            <div class="card mt-5">
+                <div class="card-content">
+                    <h3 class="teal-text">ITC 2020</h3>
+                    <br>
+                    <div class="row">
+                      <div class="input-field col s12">
+                        <input id="name" type="text" class="validate" name="name">
+                        <label for="name">Name</label>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="input-field col s12">
+                        <input id="email" type="email" class="validate" name="email">
+                        <label for="email">Email</label>
+                      </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                          <input id="password" type="password" class="validate" name="password">
+                          <label for="password">Password</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                          <input id="password-confirm" type="password" class="validate" name="password_confirmation">
+                          <label for="password-confirm">Confirm Password</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                          <input id="key-access" type="password" class="validate" name="key-access">
+                          <label for="key-access">Key Access</label>
+                        </div>
+                    </div>
+                      <div class="row">
+                        <button type="submit" class="btn btn-large btn-block">
+                            {{ __('Register') }}
+                        </button>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script type="text/javascript" src="{{ asset('js/materialize.js') }}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        M.AutoInit()
+    </script>
+</body>
+
+</html>
+{{-- @extends('layouts.app')
 
 @section('content')
 <div class="container">
@@ -82,4 +171,4 @@
         </div>
     </div>
 </div>
-@endsection
+@endsection --}}
