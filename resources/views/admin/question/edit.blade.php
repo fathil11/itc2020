@@ -3,7 +3,7 @@
 @section('title', 'Edit Soal')
 
 @section('content')
-<h2 class="center teal-text"><b>Eliminasi</b></h2>
+<h2 class="center teal-text"><b>Edit Soal</b></h2>
 <div class="card mt-3">
     <div class="card-content center">
         <div class="row">
@@ -29,10 +29,6 @@
                 <div class="input-field col s6">
                     <input id="option_b" type="text" name="option_b" value="{{ $question->option_b }}">
                     <label for="option_b">Opsi B</label>
-                </div>
-                <div class="input-field col s6">
-                    <input id="option_c" type="text" name="option_c" value="{{ $question->option_c }}">
-                    <label for="option_c">Opsi C</label>
                 </div>
                 <div class="input-field col s6">
                     <input id="option_c" type="text" name="option_c" value="{{ $question->option_c }}">

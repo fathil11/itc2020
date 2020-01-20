@@ -20,6 +20,7 @@ class CreateTransactionLogsTable extends Migration
             $table->bigInteger('question_id');
             $table->char('answer', 2)->nullable();
             $table->string('calc', 15);
+            $table->timestamps();
         });
     }
 

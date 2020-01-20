@@ -1,3 +1,44 @@
 .min-vh-80 {
     min-height: 80vh;
 }
+
+
+.bg-wave-head {
+    background-image: url("/svg/image1.svg");
+    background-size: 75vh;
+    background-repeat: no-repeat;
+}
+
+.fix-bt {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+}
+
+.blue-btn {
+    border-radius: 10px !important;
+    color: #fff;
+    background-color: #4f84ec;
+    border-color: #4f84ec;
+}
+
+.yellow-btn {
+    border-radius: 10px !important;
+    color: #fff;
+    background-color: #fcbf3d;
+    border-color: #fcbf3d;
+}
+
+.green-btn {
+    border-radius: 10px !important;
+    color: #fff;
+    background-color: #7acc5d;
+    border-color: #7acc5d;
+}
+
+.red-btn {
+    border-radius: 10px !important;
+    color: #fff;
+    background-color: #ee6e73;
+    border-color: #ee6e73;
+}

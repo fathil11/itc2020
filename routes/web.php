@@ -149,8 +149,13 @@ Route::group(['middleware' => ['auth','finale'], 'prefix' => 'participant'], fun
     Route::patch('final', 'ParticipantCompetitionController@finaleSubmit');
 });
 
+Route::group(['middleware' => ['auth','observer'], 'prefix' => 'absent'], function(){
+    Route::get('/', 'AbsentController@participantsTable');
+    Route::post('check/{participant}', 'AbsentController@absent');
+    Route::put('uncheck/{participant}', 'AbsentController@absentCancel');
+});
+
 // Public Route
-Route::get('/soal', 'PublicController@showQuestionTable');
 Route::get('/peserta', 'PublicController@showPeserta');
 Route::get('/lihat-soal', 'PublicController@showQuestion');
 

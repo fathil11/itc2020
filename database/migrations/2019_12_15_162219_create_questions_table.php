@@ -16,7 +16,7 @@ class CreateQuestionsTable extends Migration
         Schema::create('questions', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->enum('session', ['1','2','3','4']);
-            $table->string('question');
+            $table->text('question');
             $table->char('answer_key', 2);
             $table->string('option_a');
             $table->string('option_b');
