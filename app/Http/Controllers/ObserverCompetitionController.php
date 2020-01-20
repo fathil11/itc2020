@@ -13,8 +13,28 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class ObserverCompetitionController extends Controller
-{   
+{
+    function getUserDetail(){
+        $id = Auth::user()->id;
+        $user = User::find($id);
+        $nim = substr($user->email, 0, 12);
+        $nim[0] = 'A';
+        $nim =  substr_replace($nim, '.', 3, 0);
+        $nim =  substr_replace($nim, '.', 8, 0);
+
+        $year =  substr($nim, 4, 4);
+
+        $user = User::find($id);
+
+        $detail[0] = $nim;
+        $detail[1] = $year;
+        $detail[2] = $user;
+
+        return $detail;
+    }
+
     function showAnswer(){
+        $detail = $this->getUserDetail();
         $id = Auth::user()->id;
         $user = User::find($id);
         $status = CurrentStatus::first();
@@ -25,7 +45,7 @@ class ObserverCompetitionController extends Controller
             $participantss = Participant::where('id', $watch->participant_id)->get();
             $participants = array_merge($participants, array_flatten($participantss));
         }
-        return view('/observer/competition/answer', ['question' => $question])->with(compact('participants','question'));
+        return view('/observer/competition/correction', ['question' => $question])->with(compact('participants','question', 'detail'));
     }
 
     function answer(Request $request){
@@ -52,9 +72,9 @@ class ObserverCompetitionController extends Controller
                     ]);
                     TransactionLog::create([
                         'user_id' => $user->id,
-                        'participant_id' => $participant->id, 
-                        'question_id' => $question->id, 
-                        'answer' => $request->answer[$participant->id], 
+                        'participant_id' => $participant->id,
+                        'question_id' => $question->id,
+                        'answer' => $request->answer[$participant->id],
                         'calc' => +3
                     ]);
                 }
@@ -66,9 +86,9 @@ class ObserverCompetitionController extends Controller
                     ]);
                     TransactionLog::create([
                         'user_id' => $user->id,
-                        'participant_id' => $participant->id, 
-                        'question_id' => $question->id, 
-                        'answer' => $request->answer[$participant->id], 
+                        'participant_id' => $participant->id,
+                        'question_id' => $question->id,
+                        'answer' => $request->answer[$participant->id],
                         'calc' => 0
                     ]);
                 }
@@ -80,13 +100,13 @@ class ObserverCompetitionController extends Controller
                     ]);
                     TransactionLog::create([
                         'user_id' => $user->id,
-                        'participant_id' => $participant->id, 
-                        'question_id' => $question->id, 
-                        'answer' => $request->answer[$participant->id], 
+                        'participant_id' => $participant->id,
+                        'question_id' => $question->id,
+                        'answer' => $request->answer[$participant->id],
                         'calc' => 0
                     ]);
                 }
-                
+
             }
             elseif ($question->session == 2 && $participant->status == 2)
             {
@@ -98,9 +118,9 @@ class ObserverCompetitionController extends Controller
                     ]);
                     TransactionLog::create([
                         'user_id' => $user->id,
-                        'participant_id' => $participant->id, 
-                        'question_id' => $question->id, 
-                        'answer' => $request->answer[$participant->id], 
+                        'participant_id' => $participant->id,
+                        'question_id' => $question->id,
+                        'answer' => $request->answer[$participant->id],
                         'calc' => +3
                     ]);
                 }
@@ -112,9 +132,9 @@ class ObserverCompetitionController extends Controller
                     ]);
                     TransactionLog::create([
                         'user_id' => $user->id,
-                        'participant_id' => $participant->id, 
-                        'question_id' => $question->id, 
-                        'answer' => $request->answer[$participant->id], 
+                        'participant_id' => $participant->id,
+                        'question_id' => $question->id,
+                        'answer' => $request->answer[$participant->id],
                         'calc' => 0
                     ]);
                 }
@@ -126,9 +146,9 @@ class ObserverCompetitionController extends Controller
                     ]);
                     TransactionLog::create([
                         'user_id' => $user->id,
-                        'participant_id' => $participant->id, 
-                        'question_id' => $question->id, 
-                        'answer' => $request->answer[$participant->id], 
+                        'participant_id' => $participant->id,
+                        'question_id' => $question->id,
+                        'answer' => $request->answer[$participant->id],
                         'calc' => -1
                     ]);
                 }
@@ -141,7 +161,7 @@ class ObserverCompetitionController extends Controller
                 ]);
                 TransactionLog::create([
                     'user_id' => $user->id,
-                    'participant_id' => $participant->id, 
+                    'participant_id' => $participant->id,
                     'question_id' => $question->id,
                     'calc' => $request->answer[$participant->id]
                 ]);
