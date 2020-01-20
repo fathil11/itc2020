@@ -43,12 +43,12 @@ Route::group(['middleware' => ['admin','auth'], 'prefix' => 'admin'], function()
         Route::get('table/{question}', 'AdminQuestionController@showQuestion');
 
         // Add
-        Route::get('add', 'AdminQuestionController@showAddQuestion');
-        Route::post('table', 'AdminQuestionController@addQuestion');
+        Route::get('create', 'AdminQuestionController@showAddQuestion');
+        Route::post('create', 'AdminQuestionController@addQuestion');
 
         // Update
         Route::post('edit/{question}', 'AdminQuestionController@showUpdateQuestion');
-        Route::patch('table/{question}', 'AdminQuestionController@updateQuestion');
+        Route::patch('edit/{question}', 'AdminQuestionController@updateQuestion');
 
         // Delete
         Route::delete('table/{question}', 'AdminQuestionController@deleteQuestion');
@@ -123,11 +123,11 @@ Route::group(['middleware' => ['auth','observer'], 'prefix' => 'observer'], func
     Route::put('/participant/add', 'ObserverParticipantController@create');
 
     // Update
-    Route::post('edit/{participant}', 'ObserverCompetitionController@showUpdateParticipant');
-    Route::patch('/{participant}', 'ObserverCompetitionController@updateParticipant');
+    Route::get('update/{participant}', 'ObserverCompetitionController@showUpdateParticipant');
+    Route::patch('update/{participant}', 'ObserverCompetitionController@updateParticipant');
 
     // Delete
-    Route::delete('/delete/{participant}', 'ObserverCompetitionController@deleteParticipant');
+    Route::get('/delete/{participant}', 'ObserverCompetitionController@deleteParticipant');
 
     //     // Delete
     //     Route::delete('delete', 'ObserverParticipantController@deleteParticipant');
@@ -135,6 +135,8 @@ Route::group(['middleware' => ['auth','observer'], 'prefix' => 'observer'], func
     // Route::get('/', 'ObserverParticipantController@showParticipantsTable');
     // Competition
     Route::group(['prefix' => 'competition'], function(){
+
+        Route::get('/', 'ObserverParticipantController@gotoAnswer');
         // Answer
         Route::get('answer', 'ObserverCompetitionController@showAnswer');
         Route::patch('answer', 'ObserverCompetitionController@answer');
@@ -156,3 +158,7 @@ Route::get('/lihat-soal', 'PublicController@showQuestion');
 Auth::routes();
 
 Route::get('/logout', 'HomeController@logout');
+
+Route::get('/', function () {
+    return redirect('/login');
+});

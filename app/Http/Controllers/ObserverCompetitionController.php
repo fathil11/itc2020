@@ -6,13 +6,14 @@ use Auth;
 use App\User;
 use App\Participant;
 use App\ObserverParticipant;
+use App\TransactionLog;
 use App\Question;
 use App\CurrentStatus;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class ObserverCompetitionController extends Controller
-{
+{   
     function showAnswer(){
         $id = Auth::user()->id;
         $user = User::find($id);
@@ -46,7 +47,15 @@ class ObserverCompetitionController extends Controller
                 {
                     Participant::where('id', $participant->id)
                     ->update([
-                        'point_1' => $participant->point_1+3
+                        'point_1' => $participant->point_1+3,
+                        'point_2' => $participant->point_1+3
+                    ]);
+                    TransactionLog::create([
+                        'user_id' => $user->id,
+                        'participant_id' => $participant->id, 
+                        'question_id' => $question->id, 
+                        'answer' => $request->answer[$participant->id], 
+                        'calc' => +3
                     ]);
                 }
                 elseif ($request->answer[$participant->id] == 'Z')
@@ -55,6 +64,13 @@ class ObserverCompetitionController extends Controller
                     ->update([
                         'point_1' => $participant->point_1+0
                     ]);
+                    TransactionLog::create([
+                        'user_id' => $user->id,
+                        'participant_id' => $participant->id, 
+                        'question_id' => $question->id, 
+                        'answer' => $request->answer[$participant->id], 
+                        'calc' => 0
+                    ]);
                 }
                 else
                 {
@@ -62,7 +78,15 @@ class ObserverCompetitionController extends Controller
                     ->update([
                         'point_1' => $participant->point_1+0
                     ]);
+                    TransactionLog::create([
+                        'user_id' => $user->id,
+                        'participant_id' => $participant->id, 
+                        'question_id' => $question->id, 
+                        'answer' => $request->answer[$participant->id], 
+                        'calc' => 0
+                    ]);
                 }
+                
             }
             elseif ($question->session == 2 && $participant->status == 2)
             {
@@ -72,6 +96,13 @@ class ObserverCompetitionController extends Controller
                     ->update([
                         'point_2' => $participant->point_2+3
                     ]);
+                    TransactionLog::create([
+                        'user_id' => $user->id,
+                        'participant_id' => $participant->id, 
+                        'question_id' => $question->id, 
+                        'answer' => $request->answer[$participant->id], 
+                        'calc' => +3
+                    ]);
                 }
                 elseif ($request->answer[$participant->id] == 'Z')
                 {
@@ -79,12 +110,26 @@ class ObserverCompetitionController extends Controller
                     ->update([
                         'point_2' => $participant->point_2+0
                     ]);
+                    TransactionLog::create([
+                        'user_id' => $user->id,
+                        'participant_id' => $participant->id, 
+                        'question_id' => $question->id, 
+                        'answer' => $request->answer[$participant->id], 
+                        'calc' => 0
+                    ]);
                 }
                 else
                 {
                     Participant::where('id', $participant->id)
                     ->update([
                         'point_2' => $participant->point_2-1
+                    ]);
+                    TransactionLog::create([
+                        'user_id' => $user->id,
+                        'participant_id' => $participant->id, 
+                        'question_id' => $question->id, 
+                        'answer' => $request->answer[$participant->id], 
+                        'calc' => -1
                     ]);
                 }
             }
@@ -94,9 +139,15 @@ class ObserverCompetitionController extends Controller
                 ->update([
                     'point_4' => $participant->point_4+$request->answer[$participant->id]
                 ]);
+                TransactionLog::create([
+                    'user_id' => $user->id,
+                    'participant_id' => $participant->id, 
+                    'question_id' => $question->id,
+                    'calc' => $request->answer[$participant->id]
+                ]);
             }
         }
-        return redirect('/observer/competition/answer/')->with('status', 'Jawaban Berhasil Diinput');
+        return redirect('/observer/competition/')->with('status', 'Jawaban Berhasil Diinput');
     }
 
     function showUpdateParticipant(Participant $participant){
@@ -114,7 +165,7 @@ class ObserverCompetitionController extends Controller
                     'name' => $request->name,
                     'school' => $request->school
                 ]);
-        return redirect ('/observer/table')->with('status', 'Data Berhasil Diubah');
+        return redirect ('/observer/participant/table')->with('status', 'Data Berhasil Diubah');
     }
 
     function deleteParticipant(Participant $participant){
@@ -122,6 +173,6 @@ class ObserverCompetitionController extends Controller
         $user = User::find($id);
         $status = CurrentStatus::first();
         ObserverParticipant::where('observer_id', $user->id)->where('participant_id', $participant->id)->delete();
-        return redirect ('/observer/table')->with('status', 'Data Berhasil Dihapus');
+        return redirect ('observer/participant/table')->with('status', 'Data Berhasil Dihapus');
     }
 }

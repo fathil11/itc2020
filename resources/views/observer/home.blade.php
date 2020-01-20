@@ -3,7 +3,7 @@
 @section('content')
 <div class="card">
     <div class="card-content center">
-        <h3 class="secondary-text"><b>Welcome to ITC Admin Panel</b></h3>
+        <h3 class="secondary-text"><b>Welcome to ITC Observer Panel</b></h3>
         <h4>v.2.0</h4>
         <img src="{{ asset('img/anmlogo.gif') }}" class="responsive-img" alt="" srcset="">
     </div>

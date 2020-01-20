@@ -27,7 +27,7 @@
       <tbody>
         @foreach ($participants as $key=>$participant)
         <tr>
-          <td>{{ $key+1 }}</td>
+          <td>{{ $participant->id }}</td>
           <td>{{ $participant->name }}</td>
           <td>{{ $participant->school }}</td>
           <td>{{ $participant->point_1 }}</td>
@@ -44,7 +44,7 @@
                 <i class="material-icons right">create</i>
               </button>
             </form>
-            <form action="{{ url ('admin/participant/table/delete/'.$participant->id) }}" method="post"
+            <form action="{{ url ('admin/participant/table/'.$participant->id) }}" method="post"
               class="d-inline">
               @csrf
               @method('delete')
@@ -53,10 +53,6 @@
                 <i class="material-icons right">delete</i>
               </button>
             </form>
-            <button class="btn waves-effect grey darken-1 waves-light tooltipped" data-position="top"
-              data-tooltip="Kick Peserta" type="submit" name="action">
-              <i class="material-icons right">do_not_disturb_alt</i>
-            </button>
           </td>
         </tr>
         @endforeach

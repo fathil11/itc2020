@@ -48,22 +48,6 @@
                     <div class="col-6">
                         <h6 class="text-center">Score:</h6>
                         <h1 class="display-1 text-center mb-3">{{ $participant->point_3 }}</h1>
-                            @if (session('status-true'))
-                            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                {{ session('status-true') }}
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                  <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            @endif
-                            @if (session('status-false'))
-                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                {{ session('status-false') }}
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                  <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            @endif
                             @if (session('counter'))
                             <div class="alert alert-danger alert-dismissible fade show" role="alert">
                                 {{ session('counter') }}
@@ -78,7 +62,7 @@
                             <div class="form-group row justify-content-center">
                                 <label for="bet" class="col-sm-2 col-form-label">Taruhan</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="bet" placeholder="Masukkan Taruhan" name="bet">
+                                    <input type="number" class="form-control" id="bet" placeholder="Masukkan Taruhan" name="bet" min="0" step="1">
                                 </div>
                             </div>
                             <div class="form-group row">

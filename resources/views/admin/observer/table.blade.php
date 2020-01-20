@@ -17,7 +17,7 @@
       <tbody>
         @foreach ($observers as $key => $observer)
         <tr>
-          <td>{{ $key+1 }}</td>
+          <td>{{ $observer->id }}</td>
           <td>{{ $observer->name }}</td>
           <td>{{ $observer->email }}</td>
 

@@ -19,6 +19,6 @@ class FirstFinaleMiddleware
         if (Auth::user()->role == 'participant'){
             return $next($request);
         }
-        return redirect(url('/home'));
+        return redirect(url('/'));
     }
 }

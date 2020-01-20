@@ -1,68 +1,66 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+@extends('layouts.adminLayout')
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+@section('title', 'Edit Peserta')
 
-    <title>Add Question</title>
-  </head>
-  <body>
-    <div class="container my-5">
-        <h3>Form Tambah Soal</h3>
-        <div class="row">
-            <div class="col-8">
-                <form method="post" action="{{ url('admin/question/table') }}" class="my-3">
-                    @csrf
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                          <label class="input-group-text" for="session">Sesi</label>
-                        </div>
-                        <select class="custom-select" id="session" name="session">
-                          <option disabled>Choose...</option>
-                            <option value="1">Penyisihan 1</option>
-                          <option value="2">Penyisihan 2</option>
-                          <option value="3">Final 1</option>
-                          <option value="4">Final 2</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="question">Pertanyaan</label>
-                        <input type="text" class="form-control" id="question" placeholder="Masukkan Pertanyaan" name="question" value="{{ old('question') }}">
-                    </div>
-                    <div class="form-group">
-                        <label for="answer_key">Kunci Jawaban</label>
-                        <input type="text" class="form-control" id="answer_key" placeholder="Masukkan Kunci Jawaban" name="answer_key" value="{{ old('answer_key') }}">
-                    </div>
-                    <div class="form-group">
-                        <label for="option_a">Pilihan A</label>
-                        <input type="text" class="form-control" id="option_a" placeholder="Masukkan Pilihan A" name="option_a">
-                    </div>
-                    <div class="form-group">
-                        <label for="option_b">Pilihan B</label>
-                        <input type="text" class="form-control" id="option_b" placeholder="Masukkan Pilihan B" name="option_b">
-                    </div>
-                    <div class="form-group">
-                        <label for="option_c">Pilihan C</label>
-                        <input type="text" class="form-control" id="option_c" placeholder="Masukkan Pilihan C" name="option_c" value="-">
-                    </div>
-                    <div class="form-group">
-                        <label for="option_d">Pilihan D</label>
-                        <input type="text" class="form-control" id="option_d" placeholder="Masukkan Pilihan D" name="option_d" value="-">
-                    </div>
-                    <button type="submit" class="btn btn-primary">Tambah Data</button>
-                </form>
-            </div>
+@section('content')
+<h2 class="center teal-text"><b>Tambah Soal</b></h2>
+<div class="card mt-3">
+  <div class="card-content center">
+    <div class="row">
+      <form method="post" action="{{ url('admin/question/create') }}">
+        @csrf
+        @method('post')
+        <div class="input-field col s5">
+          <select id="session" name="session" required>
+            <option selected disabled>Choose...</option>
+              <option value="1">Penyisihan 1</option>
+            <option value="2">Penyisihan 2</option>
+            <option value="3">Final 1</option>
+            <option value="4">Final 2</option>
+          </select>
+          <label for="session">Sesi</label>
         </div>
-    </div>
+        <div class="input-field col s5">
+          <input id="question" type="text" name="question" required>
+          <label for="question">Pertanyaan</label>
+        </div>
+        <div class="input-field col s5">
+          <select id="answer_key" name="answer_key" required>
+            <option selected disabled>Choose...</option>
+              <option value="A">A</option>
+            <option value="B">B</option>
+            <option value="C">C</option>
+            <option value="D">D</option>
+          </select>
+          <label for="answer_key">Kunci Jawaban</label>
+        </div>
+        <div class="input-field col s5">
+          <input id="option_a" type="text" name="option_a" required>
+          <label for="option_a">Pilihan A</label>
+        </div>
+        <div class="input-field col s5">
+          <input id="option_b" type="text" name="option_b" required>
+          <label for="option_b">Pilihan B</label>
+        </div>
+        <div class="input-field col s5">
+          <input id="option_c" type="text" name="option_c" value="-" required>
+          <label for="option_c">Pilihan C</label>
+        </div>
+        <div class="input-field col s5">
+          <input id="option_d" type="text" name="option_d" value="-" required>
+          <label for="option_d">Pilihan D</label>
+        </div>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-  </body>
-</html>
+        <div class="row">
+          <button class="btn btn-large teal waves-effect waves-light btn-block-40" type="submit"
+            name="action">Tambah</button>
+        </div>
+        <div class="row">
+        <a href="{{ url('admin/question/table') }}" class="btn btn-large grey waves-effect waves-light btn-block-40" type="submit"
+            name="action">Kembali</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+@endsection

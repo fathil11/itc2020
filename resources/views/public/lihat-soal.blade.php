@@ -29,7 +29,16 @@
                     <h5>Soal {{ $question->id-60 }}</h5>
                 @else    
                 @endif
-                <h1>{{ $question->question }}</h1>
+                @if ($question->session == 2)
+                    @php
+                        $splitQuestion = $question->question;
+                        $premis = explode ("|", $splitQuestion);
+                    @endphp
+                    <h1>{{ $premis[0] }}</h1>
+                    <h1>{{ $premis[1] }}</h1>
+                @else
+                    <h1>{{ $question->question }}</h1>
+                @endif
                 @if ($question->session == 1)
                     <h2>A. {{ $question->option_a }}</h2>
                     <h2>B. {{ $question->option_b }}</h2>

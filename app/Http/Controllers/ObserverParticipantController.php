@@ -44,6 +44,13 @@ class ObserverParticipantController extends Controller
             return false;
         }
     }
+
+    function gotoAnswer(){
+        $detail = $this->getUserDetail();
+        return view('observer.competition.index')->with(compact('detail'));
+    }
+
+
     function showCreate(){
         $cur_status = CurrentStatus::first();
         $status = $this->checkStatus();
